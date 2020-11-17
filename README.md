@@ -1,4 +1,4 @@
-# ** RTP-microshack **
+# RTP-microshack
 Github repository for the Azure CycleCloud RTP microhack
 # Content
 
