@@ -2,13 +2,13 @@
 A Github repository for the Azure CycleCloud RTP microhack
 
 # Contents
-[Introduction](# Introduction)
+[Introduction](#introduction)
 
-[Objectives](# Objectives)
+[Objectives](#objectives)
 
-[Scenario](# Scenario)
+[Scenario](#scenario)
 
-[Lab](# Lab)
+[Lab](#lab)
 
 [Prerequisites](# Prerequisites)
 
