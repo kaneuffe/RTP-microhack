@@ -1,6 +1,5 @@
 # RTP-microshack
-Github repository for the Azure CycleCloud RTP microhack
-# Content
+A Github repository for the Azure CycleCloud RTP microhack
 
 # Contents
 [Introduction](#introduction)
