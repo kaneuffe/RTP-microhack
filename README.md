@@ -10,7 +10,7 @@ A Github repository for the Azure CycleCloud RTP microhack
 
 [Lab](#lab)
 
-[Prerequisites](# Prerequisites)
+[Prerequisites](#prerequisites)
 
 # Introduction
 This MicroHack explores the creation of a High Perfromance Computing (HPC) Cluster on Microsoft Azure, to run the NAMD application leveraging a singularity container and to visualize the result ones the application ran. 
