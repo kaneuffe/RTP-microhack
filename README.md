@@ -37,4 +37,4 @@ After completing this MicroHack you will:
 
 # Lab
 
-# Prerequisits
+# Prerequisites
