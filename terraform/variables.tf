@@ -8,6 +8,11 @@ variable "location" {
   default = "westeurope"
 }
 
+variable "nteams" {
+  decription = "Number of teams"
+  default = "6"
+}
+
 variable "machine_type" {
   description = "The Azure Machine Type for the CycleCloud VM"
   default = "Standard_D8s_v3"
