@@ -4,12 +4,15 @@ on:
   push:
     branches: [ main ]
 
+defaults:
+  run:
+    working-directory: ./terraform
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
 
     env:
-      working-directory: ./terraform
       ARM_CLIENT_ID: ${{secrets.TF_ARM_CLIENT_ID}}
       ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRET}}
       ARM_SUBSCRIPTION_ID: ${{secrets.TF_ARM_SUBSCRIPTION_ID}}
