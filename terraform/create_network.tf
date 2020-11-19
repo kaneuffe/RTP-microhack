@@ -96,7 +96,7 @@ resource "azurerm_network_security_group" "microhack_compute_subnet_nsg" {
 
 # Assign the network security group to the CC subnet
 resource "azurerm_subnet_network_security_group_association" "microhack_cc_subnet_nsg_assign" {
-    subnet_id                 = azurerm_subnet.microhack_cc_subnet_subnet.*.id
+    subnet_id                 = azurerm_subnet.microhack_cc_subnet_subnet.id
     network_security_group_id = azurerm_network_security_group.microhack_cc_subnet_nsg.id
 }
 
