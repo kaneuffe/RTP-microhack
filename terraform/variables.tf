@@ -9,7 +9,7 @@ variable "location" {
 }
 
 variable "nteams" {
-  decription = "Number of teams"
+  description = "Number of teams"
   default = "6"
 }
 
