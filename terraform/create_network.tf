@@ -6,7 +6,7 @@ resource "azurerm_virtual_network" "microhack_vnet" {
   address_space       = ["10.0.0.0/16"]
 }
 
-# Create a subnet for the Azure CycleCLoud server
+# Create a subnet for the Azure CycleCloud server
 resource "azurerm_subnet" "microhack_cc_subnet" {
   name                 = "${var.prefix}-cc-subnet"
   virtual_network_name = azurerm_virtual_network.microhack_vnet.name
@@ -20,7 +20,7 @@ resource "azurerm_subnet" "microhack_anf_subnet" {
   name                 = "${var.prefix}-anf-subnet"
   virtual_network_name = azurerm_virtual_network.microhack_vnet.name
   resource_group_name  = azurerm_resource_group.microhack_rg.name
-  address_prefixes     = ["10.1.0.0/24"]
+  address_prefixes     = ["10.0.1.0/24"]
   service_endpoints    = ["Microsoft.Storage"]
 }
 
@@ -30,7 +30,7 @@ resource "azurerm_subnet" "microhack_compute_subnet" {
   name                 = "${var.prefix}-compute-${count.index}-subnet"
   virtual_network_name = azurerm_virtual_network.microhack_vnet.name
   resource_group_name  = azurerm_resource_group.microhack_rg.name
-  address_prefixes     = ["10.${count.index + 2}.0.0/24"]
+  address_prefixes     = ["10.0.${count.index + 2}.0/24"]
   service_endpoints    = ["Microsoft.Storage"]
 }
 
