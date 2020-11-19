@@ -36,7 +36,7 @@ resource "azurerm_subnet" "microhack_compute_subnet" {
 
 # Create a Network Security Group
 resource "azurerm_network_security_group" "microhack_cc_subnet_nsg" {
-    name                = "${var.prefix}-subnet-nsg"
+    name                = "${var.prefix}-cc-subnet-nsg"
     location            = azurerm_resource_group.microhack_rg.location
     resource_group_name = azurerm_resource_group.microhack_rg.name
 
@@ -77,7 +77,7 @@ resource "azurerm_network_security_group" "microhack_cc_subnet_nsg" {
 
 # Create a Network Security Group
 resource "azurerm_network_security_group" "microhack_compute_subnet_nsg" {
-    name                = "${var.prefix}-subnet-nsg"
+    name                = "${var.prefix}-compute-subnet-nsg"
     location            = azurerm_resource_group.microhack_rg.location
     resource_group_name = azurerm_resource_group.microhack_rg.name
 
