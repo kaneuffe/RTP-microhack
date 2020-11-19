@@ -103,6 +103,6 @@ resource "azurerm_subnet_network_security_group_association" "microhack_cc_subne
 # Assign the netwrok security group to the Compute subnets
 resource "azurerm_subnet_network_security_group_association" "microhack_compute_subnet_nsg_assign" {
     count                     = var.nteams
-    subnet_id                 = azurerm_subnet.microhack_compute_subnet.[count.index].id
+    subnet_id                 = "${element(azurerm_subnet.microhack_compute_subnet.id, coint.index)}"
     network_security_group_id = azurerm_network_security_group.microhack_compute_subnet_nsg.id
 }
