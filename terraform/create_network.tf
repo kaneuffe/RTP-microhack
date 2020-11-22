@@ -34,7 +34,7 @@ resource "azurerm_subnet" "microhack_anf_subnet" {
 # Create a subnet for each of the microhack teams to be used for the HPC cluster
 resource "azurerm_subnet" "microhack_compute_subnet" {
   count                = var.nteams  
-  name                 = "${var.prefix}-compute-${count.index}-subnet"
+  name                 = "${var.prefix}-compute-${count.index + 1}-subnet"
   virtual_network_name = azurerm_virtual_network.microhack_vnet.name
   resource_group_name  = azurerm_resource_group.microhack_rg.name
   address_prefixes     = ["10.0.${count.index + 2}.0/24"]

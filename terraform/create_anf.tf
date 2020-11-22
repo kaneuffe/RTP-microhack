@@ -18,12 +18,12 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   #lifecycle {
   #  prevent_destroy = true
   #}
-  name                = "${var.prefix}-anf-${count.index}-volume"
+  name                = "${var.prefix}-anf-${count.index + 1}-volume"
   location            = azurerm_resource_group.microhack_rg.location
   resource_group_name = azurerm_resource_group.microhack_rg.name
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
   pool_name           = azurerm_netapp_pool.microhack_anf_pool.name  
-  volume_path         = "shared-${count.index}"
+  volume_path         = "shared-${count.index + 1}"
   service_level       = "Standard"
   subnet_id           = azurerm_subnet.microhack_anf_subnet.id
   protocols           = ["NFSv4.1"]
