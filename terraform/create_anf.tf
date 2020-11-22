@@ -36,9 +36,9 @@ data "azurerm_netapp_volume" "anf_volume" {
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
   pool_name           = azurerm_netapp_pool.microhack_anf_pool.name
   name                = azurerm_netapp_volume.miocrohack_anf_volume[count.index].name
+  depends_on          = [azurerm_netapp_volume.microhack_anf_volume]
 }
 
 output "anf_mountpoint_ips" {
   value = data.azurerm_netapp_volume.anf_volume.*.mount_ip_addresses
 } 
-
