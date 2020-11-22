@@ -39,6 +39,7 @@ data "azurerm_netapp_volume" "anf_volume" {
 }
 
 output "anf_mountpoint_ips" {
-  value = data.azurerm_netapp_volume.anf_volume.mount_ip_addresses
+  count = var.nteams
+  value = data.azurerm_netapp_volume.anf_volume[count.index].mount_ip_addresses
 } 
 
