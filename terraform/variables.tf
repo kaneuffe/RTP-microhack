@@ -18,7 +18,7 @@ variable "machine_type" {
   default = "Standard_D8s_v3"
 }
 
-variable "cyclecloud_computer_name" {
+variable "cyclecloud_server_name" {
   description =  "The private hostname for the CycleCloud VM"
   default = "ccserver"
 }

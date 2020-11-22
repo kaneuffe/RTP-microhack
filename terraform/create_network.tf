@@ -21,7 +21,14 @@ resource "azurerm_subnet" "microhack_anf_subnet" {
   virtual_network_name = azurerm_virtual_network.microhack_vnet.name
   resource_group_name  = azurerm_resource_group.microhack_rg.name
   address_prefixes     = ["10.0.1.0/24"]
-  service_endpoints    = ["Microsoft.Storage"]
+  delegation {
+    name = "netapp"
+
+    service_delegation {
+      name    = "Microsoft.Netapp/volumes"
+      actions = ["Microsoft.Network/networkinterfaces/*", "Microsoft.Network/virtualNetworks/subnets/join/action"]
+    }
+  }
 }
 
 # Create a subnet for each of the microhack teams to be used for the HPC cluster
