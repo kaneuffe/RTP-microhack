@@ -149,7 +149,7 @@ runcmd:
   }
 }
 
-# Assign role to the managed ID
+# Assign contributor role to the managed ID for CycleCloud
 resource "azurerm_role_assignment" "microhack_cc_mi_role" {
   scope                 = data.azurerm_subscription.current.id
   role_definition_name  = "Contributor"
