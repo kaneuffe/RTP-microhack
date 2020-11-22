@@ -13,7 +13,7 @@ resource "azurerm_netapp_pool" "microhack_anf_pool" {
   size_in_tb          = 4
 }
 
-resource "azurerm_netapp_volume" "miocrohack_anf_volume" {
+resource "azurerm_netapp_volume" "microhack_anf_volume" {
   count                = var.nteams
   #lifecycle {
   #  prevent_destroy = true
