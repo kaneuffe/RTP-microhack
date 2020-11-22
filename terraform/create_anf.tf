@@ -23,7 +23,7 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   resource_group_name = azurerm_resource_group.microhack_rg.name
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
   pool_name           = azurerm_netapp_pool.microhack_anf_pool.name  
-  volume_path         = "my-unique-file-path"
+  volume_path         = "shared-${count.index}"
   service_level       = "Standard"
   subnet_id           = azurerm_subnet.microhack_anf_subnet.id
   protocols           = ["NFSv4.1"]
