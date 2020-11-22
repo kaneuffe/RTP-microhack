@@ -24,7 +24,7 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
   pool_name           = azurerm_netapp_pool.microhack_anf_pool.name  
   volume_path         = "my-unique-file-path"
-  service_level       = "Premium"
+  service_level       = "Standard"
   subnet_id           = azurerm_subnet.microhack_anf_subnet.id
   protocols           = ["NFSv4.1"]
   storage_quota_in_gb = 500
