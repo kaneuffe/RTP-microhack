@@ -31,10 +31,11 @@ resource "azurerm_netapp_volume" "miocrohack_anf_volume" {
 }
 
 data "azurerm_netapp_volume" "anf_volume" {
+  count               = var.nteams
   resource_group_name = azurerm_resource_group.microhack_rg.name
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
-  pool_name           = azurerm_netapp_account.microhack_anf_pool.name
-  name                = azurerm_netapp_volume.miocrohack_anf_volume.name
+  pool_name           = azurerm_netapp_pool.microhack_anf_pool.name
+  name                = azurerm_netapp_volume.miocrohack_anf_volume[count.index].name
 }
 
 output "anf_mountpoint_ips" {

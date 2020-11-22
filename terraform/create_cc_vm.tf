@@ -35,7 +35,7 @@ resource "azurerm_network_interface" "microhack_cc_nic" {
 }
 
 # Create CycleCloud server VM
-resource "azurerm_virtual_machine" "acc_vm" {
+resource "azurerm_virtual_machine" "microhack_cc_vm" {
   name                              = var.cyclecloud_server_name
   location                          = azurerm_resource_group.microhack_rg.location 
   resource_group_name               = azurerm_resource_group.microhack_rg.name
@@ -56,7 +56,7 @@ resource "azurerm_virtual_machine" "acc_vm" {
   }
 
   storage_os_disk {
-    name              = "${var.cyclecloud_computer_name}-osdisk"
+    name              = "${var.cyclecloud_server_name}-osdisk"
     disk_size_gb      = "128"
     caching           = "ReadWrite"
     create_option     = "FromImage"
@@ -157,7 +157,7 @@ resource "azurerm_role_assignment" "microhack_cc_mi_role" {
 }
 
 # Data public IP address
-data "azurerm_public_ip" "microhack_cc_vm" {
+data "azurerm_public_ip" "cc_vm" {
   name                = azurerm_public_ip.microhack_cc_public_ip.name
   resource_group_name = azurerm_public_ip.microhack_cc_public_ip.resource_group_name
   depends_on          = [azurerm_virtual_machine.microhack_cc_vm]  
