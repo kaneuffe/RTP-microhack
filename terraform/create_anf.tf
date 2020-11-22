@@ -39,6 +39,6 @@ data "azurerm_netapp_volume" "anf_volume" {
 }
 
 output "anf_mountpoint_ips" {
-  value = data.azurerm_netapp_volume.*.mount_ip_addresses
+  value = data.azurerm_netapp_volume.anf_vomlume.*.mount_ip_addresses
 } 
 
