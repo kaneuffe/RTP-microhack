@@ -15,14 +15,14 @@ resource "azurerm_netapp_pool" "microhack_anf_pool" {
 
 resource "azurerm_netapp_volume" "miocrohack_anf_volume" {
   count                = var.nteams
-  lifecycle {
-    prevent_destroy = true
-  }
+  #lifecycle {
+  #  prevent_destroy = true
+  #}
   name                = "${var.prefix}-anf-${count.index}-volume"
   location            = azurerm_resource_group.microhack_rg.location
   resource_group_name = azurerm_resource_group.microhack_rg.name
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
-  pool_name           = azurerm_netapp_account.microhack_anf_pool.name  
+  pool_name           = azurerm_netapp_pool.microhack_anf_pool.name  
   volume_path         = "my-unique-file-path"
   service_level       = "Premium"
   subnet_id           = azurerm_subnet.microhack_anf_subnet.id
@@ -35,10 +35,6 @@ data "azurerm_netapp_volume" "anf_volume" {
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
   pool_name           = azurerm_netapp_account.microhack_anf_pool.name
   name                = azurerm_netapp_volume.miocrohack_anf_volume.name
-}
-
-output "netapp_volume_id" {
-  value = data.azurerm_netapp_volume.example.id
 }
 
 output "anf_mountpoint_ips" {
