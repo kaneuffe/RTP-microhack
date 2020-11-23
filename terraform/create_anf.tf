@@ -49,4 +49,10 @@ output "anf_mountpoints" {
 output "anf_shares" {
   value       = data.azurerm_netapp_volume.anf_volume[*].volume_path
   description = "Azure NetApp Files shares names"
-  } 
+}
+
+output "anf_mounts" {
+  value =
+    for volume in azurerm_netapp_volume.microhack_anf_volume:
+      volume.mount_ip_addresses => volume.volume_path
+}
