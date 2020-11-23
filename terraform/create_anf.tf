@@ -26,7 +26,7 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   volume_path         = "shared-${count.index + 1}"
   service_level       = "Standard"
   subnet_id           = azurerm_subnet.microhack_anf_subnet.id
-  protocols           = ["NFSv4.1"]
+  protocols           = ["NFSv3"]
   storage_quota_in_gb = 500
 }
 
