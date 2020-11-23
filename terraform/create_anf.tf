@@ -28,6 +28,7 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   subnet_id           = azurerm_subnet.microhack_anf_subnet.id
   protocols           = ["NFSv3"]
   storage_quota_in_gb = 500
+  depends_on          = [azurerm_netapp_pool.microhack_anf_pool]
 }
 
 data "azurerm_netapp_volume" "anf_volume" {
@@ -39,6 +40,6 @@ data "azurerm_netapp_volume" "anf_volume" {
   depends_on          = [azurerm_netapp_volume.microhack_anf_volume]
 }
 
-output "anf_mountpoint_ips" {
-  value = data.azurerm_netapp_volume.anf_volume.*.mount_ip_addresses
+output "anf_mountpoints" {
+  value = zipmap( value(data.azurerm_netapp_volume.anf_volume)[*].mount_ip_addresses, value(data.azurerm_netapp_volume.anf_volume)[*].name)
 } 
