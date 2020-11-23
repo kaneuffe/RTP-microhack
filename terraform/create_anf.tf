@@ -42,18 +42,13 @@ data "azurerm_netapp_volume" "anf_volume" {
 
 output "anf_mountpoints" {
   # value = zipmap([for_each value in data.azurerm_netapp_volume.anf_volume: value.mount_ip_addresses], [for_each value in data.azurerm_netapp_volume.anf_volume: value.name])
-  value       = data.azurerm_netapp_volume.anf_volume[1].mount_ip_addresses
+  value       = data.azurerm_netapp_volume.anf_volume[0].mount_ip_addresses
   description = "Azure NetApp Files IP address"
-} 
-
-output "anf_shares" {
-  value       = data.azurerm_netapp_volume.anf_volume[*].volume_path
-  description = "Azure NetApp Files shares names"
 }
 
 output "anf_mounts" {
   value = {
     for volume in azurerm_netapp_volume.microhack_anf_volume:
-      volume.id => volume.volume_path
+      volume.name => volume.volume_path
   }
 }
