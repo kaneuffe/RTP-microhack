@@ -41,6 +41,6 @@ data "azurerm_netapp_volume" "anf_volume" {
 }
 
 output "anf_mountpoints" {
-  value = data.azurerm_netapp_volume.anf_volume[*].mount_ip_addresses
+  value = zipmap(data.azurerm_netapp_volume.anf_volume[*].mount_ip_addresses, data.azurerm_netapp_volume.anf_volume[*].name)
   # value = zipmap(data.azurerm_netapp_volume.anf_volume.*.mount_ip_addresses, data.azurerm_netapp_volume.anf_volume.*.name)
 } 
