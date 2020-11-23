@@ -47,6 +47,6 @@ output "anf_mountpoints" {
 } 
 
 output "anf_shares" {
-  value       = data.azurerm_netapp_volume.anf_volume[*].value.name
+  value       = data.azurerm_netapp_volume.anf_volume[*].name
   description = "Azure NetApp Files shares names"
   } 
