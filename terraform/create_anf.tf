@@ -54,6 +54,6 @@ output "anf_shares" {
 output "anf_mounts" {
   value = {
     for volume in azurerm_netapp_volume.microhack_anf_volume:
-      volume.mount_ip_addresses => volume.volume_path
+      volume.id => volume.volume_path
   }
 }
