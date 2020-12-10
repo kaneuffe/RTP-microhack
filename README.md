@@ -26,7 +26,7 @@ After completing this MicroHack you will:
 # Pre-Requeisites 
 This MicroHack explores the creation of a High Performance Computing (HPC) Cluster on Microsoft Azure, to run the NAMD application leveraging a singularity container and to visualize the results ones the application ran.
 
-
+![image](images/microhack_architecture.png)
 
 The lab start with an pre-deployed Azure base environment including the following components:
 - Virtual Network (VNET).
