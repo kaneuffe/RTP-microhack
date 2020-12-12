@@ -63,7 +63,7 @@ terraform {
   }
 }
 
-You can create these iteam using the Azure Portal or the az client:
+You can create these iteam using the Azure Portal or the Azure client:
 
 ```azcli
 #!/bin/bash
@@ -105,7 +105,7 @@ To run the templates, youn need to set the following environment variables:
 - TF_VAR_cyclecloud_public_access_address_prefixes (Comma deparated list of IP adress ranges allowed to access the environment, e.g. 120.10.1.3/32, 123.10.2.4/24)
 - TF_VAR_terrafrom_state_storage_account_name (Name of the Azure Storage Account that contains the BLOB container, terraform-state, where the terraform state file is stored)
 
-In addition, if you want to use a service principle instead of "az login" the following, additional environment variables need to be defined in a later step:
+In addition, if you want to use a service principle instead of usging the Azure client command "az login" the following, additional environment variables need to be defined in a later step:
 
 - ARM_CLIENT_ID
 - ARM_CLIENT_SECRET
@@ -113,7 +113,9 @@ In addition, if you want to use a service principle instead of "az login" the fo
 - ARM_TENANT_ID
 
 ### GitHub actions
+Istead opf running terraform on a terminal on you compute you could use the github actions by clonig the whole repository to your own GitHub repository.
 To run the terraform template using the GitHub actions within the workflows directory, the follwing secrets need to be defined:
+
 - TF_ARM_CLIENT_ID
 - TF_ARM_CLIENT_SECRET
 - TF_ARM_SUBSCRIPTION_ID
