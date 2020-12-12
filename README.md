@@ -88,8 +88,7 @@ echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
-The name of the storage account in the variables.rf terraform template nbeeds to be replñaced by this new one.
-
+The name of the storage account needs to be defined within an environment variable or GitHub secret in the following.
 
 ### Permissions
 To be able to run this terraform template yourself or a already created service principle need to have the following permissions:
