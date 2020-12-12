@@ -24,7 +24,7 @@ variable "cyclecloud_server_name" {
 }
 
 variable "admin_username" {
-  description = "The username for the CycleCloud VM Admin user"
+  description = "The username for the CycleCloud VM admin user"
   default = "azuser"
 }
 
@@ -33,12 +33,12 @@ variable "admin_key_data" {
 }
 
 variable "cyclecloud_username" {
-  description = "The username for the initial CycleCloud Admin user"
+  description = "The username for the initial CycleCloud admin user"
   default = "ccadmin"
 }
 
 variable "cyclecloud_password" {
-  description = "The initial password for the CycleCloud Admin user"
+  description = "The initial password for the CycleCloud admin user"
 }
 
 variable "cyclecloud_public_access_address_prefixes"{
@@ -52,5 +52,5 @@ variable "cyclecloud_storage_account" {
 }
 
 variable "terraform_state_storage_account_name" {
-  description = "Name storage account that includes a container terraform-state where the terraform state file is stored"
+  description = "Name of the storage account that includes a container terraform-state where the terraform state file is stored"
 }
