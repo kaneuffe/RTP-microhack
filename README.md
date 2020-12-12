@@ -113,7 +113,7 @@ In addition, if you want to use a service principle instead of usging the Azure 
 - ARM_TENANT_ID
 
 ### GitHub actions
-Istead opf running terraform on a terminal on you compute you could use the github actions by clonig the whole repository to your own GitHub repository.
+Istead opf running terraform on a terminal on you compute you could use the github actions by clonig the whole repository importing it into a new GitHub repository within your GitHub account.
 To run the terraform template using the GitHub actions within the workflows directory, the follwing secrets need to be defined:
 
 - TF_ARM_CLIENT_ID
