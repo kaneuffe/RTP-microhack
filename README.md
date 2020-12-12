@@ -65,8 +65,7 @@ terraform {
 
 You can create these iteam using the Azure Portal or the az client:
 
-```
-**
+```azcli
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tf-state-rg
@@ -88,7 +87,6 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
-**
 ```
 The name of the storage account needs to be defined within an environment variable or GitHub secret in the following.
 
