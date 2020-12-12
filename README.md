@@ -47,4 +47,80 @@ The lab start with an pre-deployed Azure base environment including the followin
 ## Task 3:
 
 # Appendix - Deploying the MicroHack environment
+To use the Terraform tenplates in this repository to create the MicroHack base environment, the following requirements need to be in place: 
+
+## Requirements
+
+### Terraform
+The terraform templetes within this repository require a previously created Azure Resource Grou, Storage Account and a BLOB Storage Container as you can see within the main.tf template:
+
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "tf-state-rg"
+    storage_account_name = "tfstatemhstorage"
+    container_name       = "terraform-state"
+    key                  = "terraform.tfstate"
+  }
+}
+
+You can create these iteam using the Azure Portal or the AZ client:
+
+```
+#!/bin/bash
+
+RESOURCE_GROUP_NAME=tstate
+STORAGE_ACCOUNT_NAME=tstate$RANDOM
+CONTAINER_NAME=tstate
+
+# Create resource group
+az group create --name $RESOURCE_GROUP_NAME --location eastus
+
+# Create storage account
+az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob
+
+# Get storage account key
+ACCOUNT_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query '[0].value' -o tsv)
+
+# Create blob container
+az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOUNT_NAME --account-key $ACCOUNT_KEY
+
+echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
+echo "container_name: $CONTAINER_NAME"
+echo "access_key: $ACCOUNT_KEY"
+```
+
+### Permissions
+To be able to run this terraform template yourself or a already created service principle need to have the following permissions:
+- OWNER rights for the subscription in scope or
+- CONTRIBUTOR and USER ACCESS ADMINISTRATOR for the subscription in scope
+
+### Environment variables
+To run the templates, youn need to set the following environment variables:
+- TF_VAR_admin_username (CycleCloud VM OS administrator username)
+- TF_VAR_admin_password (CycleCLoud VM OS administrator password - to make password authentication work, please change "disable_password_authentication = false" in main.tf)
+- TF_VAR_admin_key_data (CyclecCloud VM OS administrator public ssh key)
+- TF_VAR_cyclecloud_username (CycleCloud GUI administrator username)
+- TF_VAR_cyclecloud_password (CycleCloud GUI administrator username)
+- TF_VAR_cyclecloud_public_access_address_prefixes (Comma deparated list of IP adress ranges allowed to access the environment, e.g. 120.10.1.3/32, 123.10.2.4/24)
+
+In addition, if you want to use a service principle instead of "az login" the following, additional environment variables need to be defined:
+
+- ARM_CLIENT_ID
+- ARM_CLIENT_SECRET
+- ARM_SUBSCRIPTION_ID
+- ARM_TENANT_ID
+
+### GitHub actions
+To run the terraform template using the GitHub actions within the workflows directory, the follwing secrets need to be defined:
+- TF_ARM_CLIENT_ID
+- TF_ARM_CLIENT_SECRET
+- TF_ARM_SUBSCRIPTION_ID
+- TF_ARM_TENANT_ID
+- TF_VAR_ADMIN_USERNAME
+- TF_VAR_ADMIN_PASSWORD
+- TF_VAR_ADMIN_KEY_DATA
+- TF_VAR_CYCLECLOUD_USERNAME
+- TF_VAR_CYCLECLOUD_PASSWORD
+- TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES
+
 
