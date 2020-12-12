@@ -104,6 +104,7 @@ To run the templates, youn need to set the following environment variables:
 - TF_VAR_cyclecloud_username (CycleCloud GUI administrator username)
 - TF_VAR_cyclecloud_password (CycleCloud GUI administrator username)
 - TF_VAR_cyclecloud_public_access_address_prefixes (Comma deparated list of IP adress ranges allowed to access the environment, e.g. 120.10.1.3/32, 123.10.2.4/24)
+- TF_VAR_terrafrom_state_storage_account_name
 
 In addition, if you want to use a service principle instead of "az login" the following, additional environment variables need to be defined:
 
@@ -124,5 +125,6 @@ To run the terraform template using the GitHub actions within the workflows dire
 - TF_VAR_CYCLECLOUD_USERNAME
 - TF_VAR_CYCLECLOUD_PASSWORD
 - TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES
+- TF_VAR_TERRAFORM_STATE_STORAGE_ACCOUNT_NAME
 
 
