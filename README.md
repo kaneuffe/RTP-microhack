@@ -63,14 +63,14 @@ terraform {
   }
 }
 
-You can create these iteam using the Azure Portal or the AZ client:
+You can create these iteam using the Azure Portal or the az client:
 
 ```
 #!/bin/bash
 
-RESOURCE_GROUP_NAME=tstate
-STORAGE_ACCOUNT_NAME=tstate$RANDOM
-CONTAINER_NAME=tstate
+RESOURCE_GROUP_NAME=tf-state-rg
+STORAGE_ACCOUNT_NAME=tstatemhstorage$RANDOM
+CONTAINER_NAME=terraform-state
 
 # Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location eastus
@@ -88,6 +88,8 @@ echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
+The name of the storage account in the variables.rf terraform template nbeeds to be replñaced by this new one.
+
 
 ### Permissions
 To be able to run this terraform template yourself or a already created service principle need to have the following permissions:
