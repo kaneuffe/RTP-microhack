@@ -104,7 +104,7 @@ To run the templates, youn need to set the following environment variables:
 - TF_VAR_cyclecloud_username (CycleCloud GUI administrator username)
 - TF_VAR_cyclecloud_password (CycleCloud GUI administrator username)
 - TF_VAR_cyclecloud_public_access_address_prefixes (Comma deparated list of IP adress ranges allowed to access the environment, e.g. 120.10.1.3/32, 123.10.2.4/24)
-- TF_VAR_terrafrom_state_storage_account_name
+- TF_VAR_terrafrom_state_storage_account_name (Name of the Azure Storage Account that contains the BLOB container, terraform-state, where the terraform state file is stored)
 
 In addition, if you want to use a service principle instead of "az login" the following, additional environment variables need to be defined:
 

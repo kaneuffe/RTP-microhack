@@ -23,7 +23,7 @@ jobs:
       TF_VAR_cyclecloud_username: ${{secrets.TF_VAR_CYCLECLOUD_USERNAME}}
       TF_VAR_cyclecloud_password: ${{secrets.TF_VAR_CYCLECLOUD_PASSWORD}}
       TF_VAR_cyclecloud_public_access_address_prefixes: ${{secrets.TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES}}
-
+      TF_VAR_terraform_state_storage_account_name: ${{secrets.TF_VAR_TERRAFORM_STATE_STORAGE_ACCOUNT_NAME}}
     steps:
       - uses: actions/checkout@v2
 
