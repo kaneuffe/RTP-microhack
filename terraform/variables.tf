@@ -50,3 +50,7 @@ variable "cyclecloud_storage_account" {
   description = "Name prefix of storage account to use for Azure CycleCloud storage locker"
   default = "ccstorage"
 }
+
+variable "terraform_state_storage_account_name" {
+  description = "Name storage account that includes a container terraform-state where the terraform state file is stored"
+}
