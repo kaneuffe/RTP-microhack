@@ -66,6 +66,7 @@ terraform {
 You can create these iteam using the Azure Portal or the az client:
 
 ```
+**
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tf-state-rg
@@ -87,6 +88,7 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
+**
 ```
 The name of the storage account needs to be defined within an environment variable or GitHub secret in the following.
 
@@ -105,7 +107,7 @@ To run the templates, youn need to set the following environment variables:
 - TF_VAR_cyclecloud_public_access_address_prefixes (Comma deparated list of IP adress ranges allowed to access the environment, e.g. 120.10.1.3/32, 123.10.2.4/24)
 - TF_VAR_terrafrom_state_storage_account_name (Name of the Azure Storage Account that contains the BLOB container, terraform-state, where the terraform state file is stored)
 
-In addition, if you want to use a service principle instead of "az login" the following, additional environment variables need to be defined:
+In addition, if you want to use a service principle instead of "az login" the following, additional environment variables need to be defined in a later step:
 
 - ARM_CLIENT_ID
 - ARM_CLIENT_SECRET
