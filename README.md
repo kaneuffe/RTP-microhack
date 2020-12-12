@@ -54,7 +54,8 @@ To use the Terraform tenplates in this repository to create the MicroHack base e
 ### Terraform
 The terraform templetes within this repository require a previously created Azure Resource Grou, Storage Account and a BLOB Storage Container as you can see within the main.tf template:
 
-```
+```HCL
+...
 terraform {
   backend "azurerm" {
     resource_group_name  = "tf-state-rg"
@@ -63,6 +64,7 @@ terraform {
     key                  = "terraform.tfstate"
   }
 }
+...
 ```
 
 You can create these iteam using the Azure Portal or the Azure client:
