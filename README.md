@@ -69,7 +69,7 @@ terraform {
 
 You can create these iteam using the Azure Portal or the Azure client:
 
-```Shell
+```shell-script
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tf-state-rg
