@@ -1,6 +1,6 @@
 variable "prefix" {
   description = "The Prefix used for all CycleCloud VM resources"
-  default = "ccmh"
+  default = "mh"
 }
 
 variable "location" {
