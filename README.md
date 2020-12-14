@@ -132,4 +132,13 @@ To run the terraform template using the GitHub actions within the workflows dire
 - TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES
 - TF_VAR_TERRAFORM_STATE_STORAGE_ACCOUNT_NAME
 
+### Run Terraform
+To create the Azure infrastructure for the MicroHack you can follow these steps:
+
+1) Clone the repository
+´´´
+git clone https://github.com/kaneuffe/RTP-microhack
+´´´
+2) 
+
 
