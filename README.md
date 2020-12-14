@@ -51,7 +51,7 @@ To use the Terraform tenplates in this repository to create the MicroHack base e
 
 ## Requirements
 
-### Terraform
+### Terraform state container
 The terraform templetes within this repository require a previously created Azure Resource Grou, Storage Account and a BLOB Storage Container as you can see within the main.tf template:
 
 ```HCL
@@ -116,9 +116,37 @@ In addition, if you want to use a service principle instead of usging the Azure 
 - ARM_SUBSCRIPTION_ID
 - ARM_TENANT_ID
 
-### GitHub actions
-Istead opf running terraform on a terminal on you compute you could use the github actions by clonig the whole repository importing it into a new GitHub repository within your GitHub account.
-To run the terraform template using the GitHub actions within the workflows directory, the follwing secrets need to be defined:
+## Run Terraform
+To create the Azure infrastructure for the MicroHack you can follow these steps:
+
+1) Install Terraform if required and add it to your PATH.
+2) Clone the repository
+```Shell
+git clone https://github.com/kaneuffe/RTP-microhack
+```
+3) Create the Azure Service Principle and source the four ARM_* variables
+4) Source the TF_VAR_* variables
+5) Switch into the terraform subdirectory and adapt the variables.tf file if necessary.
+6) Run terraform init:
+```Shell
+terraform init
+```
+7) Fix alll issues if there are any and run terraform plan:
+```Shell
+terraform plan
+```
+8) If there are issues, fix them and run terraform plan until it gives not further errors. Then deploy the environment using terraform apply:
+```Shell
+terraform apply
+```
+9) If there are mayor errors or run terraform destroy and fix the issues before running terraform plan and apply again. You can also use terraform destroy once you want to get rid of the environment. 
+```Shell
+terraform destroy
+```
+
+## Alternative GitHub actions
+Instead of running terraform on a terminal on you compute you could use the GitHub actions by cloning the whole repository importing it into a new GitHub repository within your GitHub account.
+To run the terraform template using the GitHub actions within the workflows directory, the following secrets need to be defined:
 
 - TF_ARM_CLIENT_ID
 - TF_ARM_CLIENT_SECRET
@@ -132,13 +160,8 @@ To run the terraform template using the GitHub actions within the workflows dire
 - TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES
 - TF_VAR_TERRAFORM_STATE_STORAGE_ACCOUNT_NAME
 
-### Run Terraform
-To create the Azure infrastructure for the MicroHack you can follow these steps:
+To delete the environment, we recommend you do a terraform destroy using on the command line using the instructions above.
 
-1) Clone the repository
-```
-git clone https://github.com/kaneuffe/RTP-microhack
-```
-2) 
+
 
 
