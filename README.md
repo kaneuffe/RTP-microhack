@@ -158,7 +158,11 @@ To run the terraform template using the GitHub actions within the workflows dire
 - TF_VAR_CYCLECLOUD_USERNAME
 - TF_VAR_CYCLECLOUD_PASSWORD
 - TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES
-- TF_VAR_TERRAFORM_STATE_STORAGE_ACCOUNT_NAME
+- TF_CLI_ARGS
+
+TF_CLI_ARGS needs to point to the Azure storage account where the terraform backend state file is stored. The variable needs to be populated by for example: 
+  -backend-config="storage_account_name=mysaccount" 
+if mysaccount is the name of the storage account.
 
 To delete the environment, we recommend you do a terraform destroy using on the command line using the instructions above.
 
