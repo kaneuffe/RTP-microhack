@@ -31,7 +31,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-        uses: hashicorp/setup-terraform@v1
+      - uses: hashicorp/setup-terraform@v1
 
       - name: Terraform fmt
         id: fmt
@@ -43,7 +43,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        id: plan
+        id:  plan
         run: terraform plan
         
       - name: Terraform Apply

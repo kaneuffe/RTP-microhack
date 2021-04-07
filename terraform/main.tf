@@ -12,7 +12,6 @@ terraform {
   }
 }
 
-
 # Get the current Azure subcription data
 data "azurerm_subscription" "current" {
 }
