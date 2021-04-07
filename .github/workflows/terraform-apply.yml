@@ -28,17 +28,24 @@ jobs:
       TF_VAR_cyclecloud_password: ${{secrets.TF_VAR_CYCLECLOUD_PASSWORD}}
       TF_VAR_cyclecloud_public_access_address_prefixes: ${{secrets.TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES}}
       TF_VAR_terraform_state_storage_account_name: ${{secrets.TF_VAR_TERRAFORM_STATE_STORAGE_ACCOUNT_NAME}}
+    
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
       - name: Terraform Init
+        id: init
         run: terraform init
 
       - name: Terraform Plan
+        id: plan
         run: terraform plan
         
       - name: Terraform Apply
+        id: apply
         run: terraform apply -auto-approve
