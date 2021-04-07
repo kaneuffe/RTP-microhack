@@ -2,11 +2,10 @@ provider "azurerm" {
   features {}
 }
 
-# Backend using a state Terraform file in a storage account
+# Backend using a state Terraform file in a storage account (storage_account_name has been defined in the command line options for terraorm)
 terraform {
   backend "azurerm" {
     resource_group_name  = "tf-state-rg"
-    # storage_account_name = var.terraform_state_storage_account_name
     container_name       = "terraform-state"
     key                  = "terraform.tfstate"
   }
