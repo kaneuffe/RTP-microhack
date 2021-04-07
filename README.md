@@ -59,7 +59,7 @@ The terraform templetes within this repository require a previously created Azur
 terraform {
   backend "azurerm" {
     resource_group_name  = "tf-state-rg"
-    storage_account_name = "tfstatemhstorage"
+    storage_account_name = "tfstatemhstorageXXXX"
     container_name       = "terraform-state"
     key                  = "terraform.tfstate"
   }
@@ -107,7 +107,7 @@ To run the templates, youn need to set the following environment variables:
 - TF_VAR_cyclecloud_username (CycleCloud GUI administrator username)
 - TF_VAR_cyclecloud_password (CycleCloud GUI administrator username)
 - TF_VAR_cyclecloud_public_access_address_prefixes (Comma deparated list of IP adress ranges allowed to access the environment, e.g. 120.10.1.3/32, 123.10.2.4/24)
-- TF_VAR_terrafrom_state_storage_account_name (Name of the Azure Storage Account that contains the BLOB container, terraform-state, where the terraform state file is stored)
+- TF_CLI_ARGS_init (Backend configuration command line argument that includes the Azure Storage Account that contains the BLOB container, terraform-state, where the terraform state file is stored. Example: export TF_CLI_ARGS_init='-backend-config="storage_account_name=tfstatemhstorage551"')
 
 In addition, if you want to use a service principle instead of usging the Azure client command "az login" the following, additional environment variables need to be defined in a later step:
 
@@ -160,10 +160,11 @@ To run the terraform template using the GitHub actions within the workflows dire
 - TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES
 - TF_CLI_ARGS
 
-TF_CLI_ARGS needs to point to the Azure storage account where the terraform backend state file is stored. The variable needs to be populated by for example: 
-  -backend-config="storage_account_name=mysaccount" 
-  
-if mysaccount is the name of the storage account.
+TF_CLI_ARGS needs to point to the Azure storage account where the terraform backend state file is stored. The variable needs to be populated by for example:
+
+```shell-script
+  -backend-config="storage_account_name=tfstatemhstorage551" 
+```  
 
 To delete the environment, we recommend you do a terraform destroy using on the command line using the instructions above.
 
