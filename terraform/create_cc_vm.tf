@@ -51,7 +51,7 @@ resource "azurerm_virtual_machine" "microhack_cc_vm" {
   storage_image_reference {
     publisher = "OpenLogic"
     offer     = "CentOS"
-    sku       = "8_2"
+    sku       = "8_1"
     version   = "latest"
   }
 
