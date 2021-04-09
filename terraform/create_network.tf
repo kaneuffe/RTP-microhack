@@ -55,7 +55,7 @@ resource "azurerm_network_security_group" "microhack_cc_subnet_nsg" {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
-        source_address_prefixes    = list(var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2)
+        source_address_prefixes    = [var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2]
         destination_address_prefix = "*"
     }
     security_rule {
@@ -66,7 +66,7 @@ resource "azurerm_network_security_group" "microhack_cc_subnet_nsg" {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "80"
-        source_address_prefixes    = list(var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2)
+        source_address_prefixes    = [var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2]
         destination_address_prefix = "*"
     }
     security_rule {
@@ -77,7 +77,7 @@ resource "azurerm_network_security_group" "microhack_cc_subnet_nsg" {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "443"
-        source_address_prefixes    = list(var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2)
+        source_address_prefixes    = [var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2]
         destination_address_prefix = "*"
     }
 }
