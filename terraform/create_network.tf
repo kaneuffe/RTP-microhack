@@ -6,6 +6,7 @@ resource "azurerm_virtual_network" "microhack_vnet" {
   address_space       = ["10.0.0.0/16"]
 }
 
+
 # Create a subnet for the Azure CycleCloud server
 resource "azurerm_subnet" "microhack_cc_subnet" {
   name                 = "${var.prefix}-cc-subnet"
