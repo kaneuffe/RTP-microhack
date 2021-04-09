@@ -27,6 +27,8 @@ jobs:
       TF_VAR_cyclecloud_username: ${{secrets.TF_VAR_CYCLECLOUD_USERNAME}}
       TF_VAR_cyclecloud_password: ${{secrets.TF_VAR_CYCLECLOUD_PASSWORD}}
       TF_VAR_cyclecloud_public_access_address_prefixes: ${{secrets.TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIXES}}
+      TF_VAR_cyclecloud_public_access_address_prefix1: {{secrets.TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIX1}}
+      TF_VAR_cyclecloud_public_access_address_prefix2: {{secrets.TF_VAR_CYCLECLOUD_PUBLIC_ACCESS_ADDRESS_PREFIX2}}
       TF_VAR_terraform_state_storage_account_name: ${{secrets.TF_VAR_TERRAFORM_STATE_STORAGE_ACCOUNT_NAME}}
       TF_CLI_ARGS_init: ${{secrets.TF_CLI_ARGS_INIT}}
     
