@@ -45,6 +45,14 @@ variable "cyclecloud_public_access_address_prefixes"{
   description = "PublicIP address ranges allowed to connect to CycleCloud"
 }
 
+variable "cyclecloud_public_access_address_prefix1"{
+  description = "PublicIP address ranges 1 allowed to connect to CycleCloud"
+}
+
+variable "cyclecloud_public_access_address_prefix2"{
+  description = "PublicIP address ranges 2 allowed to connect to CycleCloud"
+}
+
 # Storage account name can contain only lowercase letters and numbers.
 variable "cyclecloud_storage_account" {
   description = "Name prefix of storage account to use for Azure CycleCloud storage locker"
