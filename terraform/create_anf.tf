@@ -32,6 +32,7 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
 
   export_policy_rule {
     rule_index      = "1"
+    protocols_enabled = ["NFSv3"]
     allowed_clients = ["10.0.${count.index + 2}.0/24"]
   }
 }
