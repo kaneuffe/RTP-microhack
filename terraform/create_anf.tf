@@ -29,6 +29,12 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   protocols           = ["NFSv3"]
   storage_quota_in_gb = 500
   depends_on          = [azurerm_netapp_pool.microhack_anf_pool]
+
+  export_policy_rule {
+    rule_index      = 1
+    allowed_clients = ["$data.azurerm_subnet.microhack_cc_subnet.address_prefix"]
+  }
+
 }
 
 data "azurerm_netapp_volume" "anf_volume" {
