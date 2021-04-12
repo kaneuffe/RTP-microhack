@@ -31,10 +31,9 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   depends_on          = [azurerm_netapp_pool.microhack_anf_pool]
 
   export_policy_rule {
-    rule_index      = 1
-    allowed_clients = [azurerm_subnet.microhack_cc_subnet.address_prefixes]
+    rule_index      = "${count.index + 1}"
+    allowed_clients = ["10.0.${count.index + 2}.0/24"]
   }
-
 }
 
 data "azurerm_netapp_volume" "anf_volume" {
