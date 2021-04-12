@@ -32,7 +32,7 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
 
   export_policy_rule {
     rule_index      = 1
-    allowed_clients = ["${data.azurerm_subnet.microhack_cc_subnet.address_prefix}"]
+    allowed_clients = ["${data.azurerm_subnet.microhack_cc_subnet.address_prefixes}"]
   }
 
 }
