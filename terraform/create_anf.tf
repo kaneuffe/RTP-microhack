@@ -34,7 +34,7 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
     rule_index      = "1"
     protocols_enabled = ["NFSv3"]
     unix_read_write  = true
-    allow_root_access = true
+   # allow_root_access = true
     allowed_clients = ["10.0.${count.index + 2}.0/24"]
   }
 }
