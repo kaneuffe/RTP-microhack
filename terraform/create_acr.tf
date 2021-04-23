@@ -5,7 +5,3 @@ resource "azurerm_container_registry" "microhack-acr" {
   sku                      = "Basic"
   admin_enabled            = true
 }
-
-output "acr_admin_password" {
-  value       = azurerm_container_registry.microhack-acr.admin_password
-}
