@@ -9,7 +9,7 @@ resource "azurerm_netapp_pool" "microhack_anf_pool" {
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
   location            = azurerm_resource_group.microhack_rg.location
   resource_group_name = azurerm_resource_group.microhack_rg.name
-  service_level       = "Standard"
+  service_level       = "Ultra"
   size_in_tb          = 4
 }
 
