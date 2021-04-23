@@ -10,7 +10,7 @@ variable "location" {
 
 variable "nteams" {
   description = "Number of teams"
-  default = "10"
+  default = "6"
 }
 
 variable "machine_type" {

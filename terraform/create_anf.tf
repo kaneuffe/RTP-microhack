@@ -10,7 +10,7 @@ resource "azurerm_netapp_pool" "microhack_anf_pool" {
   location            = azurerm_resource_group.microhack_rg.location
   resource_group_name = azurerm_resource_group.microhack_rg.name
   service_level       = "Standard"
-  size_in_tb          = 5
+  size_in_tb          = 4
 }
 
 resource "azurerm_netapp_volume" "microhack_anf_volume" {
@@ -24,10 +24,10 @@ resource "azurerm_netapp_volume" "microhack_anf_volume" {
   account_name        = azurerm_netapp_account.microhack_anf_acc.name
   pool_name           = azurerm_netapp_pool.microhack_anf_pool.name  
   volume_path         = "shared-${count.index + 1}"
-  service_level       = "Standard"
+  service_level       = "Ultra"
   subnet_id           = azurerm_subnet.microhack_anf_subnet.id
   protocols           = ["NFSv3"]
-  storage_quota_in_gb = 500
+  storage_quota_in_gb = 650
   depends_on          = [azurerm_netapp_pool.microhack_anf_pool]
 
   export_policy_rule {
