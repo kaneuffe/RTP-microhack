@@ -130,7 +130,143 @@ Once the scheduler has started without an error we are ready to move to the next
 
 ## Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes
 
-## Task 3: Analice the benchmark´s scalability and visualice the results
+Once the cluster came up without any issues you can see in the Azure CycleCloud GUI that the status of the scheduler show a green bar and the two node arrays, hpc and htc a grey one.
+
+![image](https://user-images.githubusercontent.com/57151484/115963915-ffdb5480-a521-11eb-9156-1e721208db34.png)
+
+### Connect to the scheduler node
+
+By clicking on the scheduler line, another box will be displayed below, which contains more information about the scheduler node. 
+
+![image](https://user-images.githubusercontent.com/57151484/115963927-0ec20700-a522-11eb-882c-5d0d9a8c38b2.png)
+
+By clicking on Connect below, a popup window appears that will show you the IP address to connect trough an SSH client to the scheduler node.
+
+![image](https://user-images.githubusercontent.com/57151484/115963935-18e40580-a522-11eb-9901-6f2709817acd.png)
+
+Using the IP adreess and the username we can use out favourite SSH client to connect to the scheduler.
+Once you are logged into the session you see the Linux command line prompt:Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
+
+```Shell
+Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
+[team6@ip-0A000704 ~]$
+```
+### Download required files and the namd Singularity container
+
+In the next step create a namd directory and switch into it:
+
+```Shell
+[team6@ip-0A000704 ~]$ mkdir namd
+[team6@ip-0A000704 ~]$ cd namd
+```
+Download the job submission namd-sjob.sh script 
+
+```Shell
+[team6@ip-0A000704 namd]$ wget https://github.com/kaneuffe/RTP-microhack/tree/main/scripts/namd-sjob.sh
+```
+and the download-benchmak.sh script from github:
+
+```Shell
+[team6@ip-0A000704 namd]$ wget https://github.com/kaneuffe/RTP-microhack/tree/main/scripts/download_benchmarks.sh
+```
+Once downloaded we execute the download_benchmarks.sh script:
+
+```Shell
+[team6@ip-0A000704 namd]$ . ./download_benchmark
+```
+
+The script will download the benchmark input files and move it to a folder called namd-benchmarks.
+
+```Shell
+[team6@ip-0A000704 namd]$ ls namd-benchmarks/
+1400k-atoms  20k-atoms  3000k-atoms  465k-atoms  61k-atoms  namd
+```
+
+Now let´s download the already prepared namd singularity container from the Azure Container Registry using the container registry USERNAME and PASSWORD provided to you.
+
+```Shell
+[team6@ip-0A000704 namd]$ singularity pull --docker-username USERNAME --docker-password PASSWORD namd-2.14 oras://mhacr21.azurecr.io/namd/namd-2.14:latest
+```
+### Submit the first Slurm namd job:
+
+Once you downloaded the namd container we need to modify the jobs submission script namd-sjobs.sh, modifying the total number of CPU cores, number olf compute nodes and the path to the singularity container. 
+Please change line 5, line 6 and line 28 setting the number of nodes to 1, number of ntasks to 120 and the path of the namd container to /shared/home/TEAM_USERNAME/namd/namd-2.14.sif.
+
+```Shell-script
+#!/bin/bash
+#SBATCH --job-name=namd
+#SBATCH --error=%x_%j.err
+#SBATCH --output=%x_%j.out
+#SBATCH --nodes=1
+#SBATCH --ntasks=120
+#SBATCH --partition=hpc
+
+#
+# Load modules
+#
+module load mpi/hpcx
+
+#
+# Switch to workdir
+#
+WORKDIR=/shared/home/kai/namd/namd-benchmarks/1400k-atoms/
+cd $WORKDIR
+#
+# Set INPUT variables
+#
+INPUT=benchmark.in
+
+#
+# Define variables
+#
+CHARMRUN="/sw/namd/charmrun +n ${SLURM_NTASKS} ++mpiexec ++remote-shell srun"
+SINGULARITY="`which singularity` exec --bind /opt,/etc/libibverbs.d,/usr/bin/srun,/var/run/munge,/usr/lib64/libmunge.so.2,/usr/lib64/libmunge.so.2.0.0,/run/munge,/etc/slurm,/sched,/usr/lib64/slurm /shared/home/team06/namd/namd-2.14.sif"
+NAMD2="/sw/namd/namd2"
+
+export SINGULARITYENV_PATH=${PATH}
+export SINGULARITYENV_LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
+
+${SINGULARITY} ${CHARMRUN} ${SINGULARITY} ${NAMD2} ${INPUT}
+```
+
+Once we have changed the submission script, we are ready to submit our first job to the Slurm Cluster. 
+
+```Shell
+[team06@ip-0A000704 namd]$ sbatch namd-sjob.sh
+Submitted batch job 3
+```
+
+Slurm returns the JOB_ID so we can track the job (e.g. 3). We can check the status of the job by using the squeue command.
+```Shell
+[team06@ip-0A000704 namd]$ squeue
+    JOBID 	PARTITION	NAME     USER    ST TIME  NODES  NODELIST(REASON)
+    3 		hpc     	namd     team06  CF 0:02  4 	  hpc-pg0-[1-4]
+```
+
+The status (ST), will stay at CF (configuring) during the time it requires to spinup the HPC compute node VMs. You can also monitor the creation of the compute node on the Azure CycleCloud GUI. Once the node is up, the status will change to R (running).
+
+```Shell
+[team06@ip-0A000704 namd]$ squeue
+    JOBID PARTITION  NAME     USER    ST TIME  NODES NODELIST(REASON)
+    3     hpc        namd     team06  R  2:06  4 	   hpc-pg0-[1-4]
+```
+
+Once the job has finished it disappears from the output:
+
+```Shell
+[team6@ip-0A000704 namd]$ squeue
+   JOBID PARTITION NAME       USER    ST TIME  NODES NODELIST(REASON)
+```
+
+Now we can check the job´s output (e.g. namd_3.out) and error (e.g. namd_3.err) files. The error file should be empty. If it is not, please fix the error first before continuing.
+
+### Scalability test
+
+
+
+
+
+## Task 3: Analize the benchmark´s scalability and visualize the namd results
 
 
 
