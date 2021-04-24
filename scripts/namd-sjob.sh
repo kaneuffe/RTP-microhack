@@ -2,8 +2,8 @@
 #SBATCH --job-name=namd
 #SBATCH --error=%x_%j.err
 #SBATCH --output=%x_%j.out
-#SBATCH --nodes=8
-#SBATCH --ntasks=960
+#SBATCH --nodes=1
+#SBATCH --ntasks=120
 #SBATCH --partition=hpc
 
 #
