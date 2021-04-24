@@ -262,9 +262,17 @@ Now we can check the job´s output (e.g. namd_3.out) and error (e.g. namd_3.err)
 
 ### Scalability test
 
-In continuation, we will run another 3 jobs with the following number of cores and nodes:
+In continuation, we will run another 3 jobs. We do this in the same way as before:
 
-|node|ntasks|
+1) Modify namd-sjob.sh
+2) submit tyhe job using sbatch
+3) Wait for the job to finish
+4) Modify namd-sjob
+5) ...
+
+with the following number of cores and nodes:
+
+|nodes|ntasks|
 |------|-------|
 | 2 | 240 |
 | 4 | 480 |
