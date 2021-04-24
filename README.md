@@ -172,7 +172,7 @@ and the download-benchmak.sh script from github:
 Once downloaded we execute the download_benchmarks.sh script:
 
 ```Shell
-[team6@ip-0A000704 namd]$ . ./download_benchmark
+[team6@ip-0A000704 namd]$ . ./download_benchmark.sh
 ```
 
 The script will download the benchmark input files and move it to a folder called namd-benchmarks.
