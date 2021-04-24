@@ -91,7 +91,7 @@ In the advance networking section, please make sure that only Private Head Node 
 To move to the next page, please click on Next on the below. Cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization. We will use it here to install additional software packages and to disable SElinux as Security Enhancement for Linux that is not required for this non-production environment.  
 The cloud-init script we are going to introduce for all three sections scheduler, hpc and htc is this one:
 
-```shell-script
+```HCL
 #cloud-config
 packages:
   - nfs-utils
