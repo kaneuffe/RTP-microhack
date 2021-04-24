@@ -94,7 +94,7 @@ The cloud-init script we are going to introduce for all three sections scheduler
 ```shell-script
 #cloud-config
 packages:
- - nfs-utils
+  - nfs-utils
 
 runcmd:
   - 'setenforce 0'
