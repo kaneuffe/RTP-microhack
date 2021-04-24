@@ -1,0 +1,18 @@
+bootstrap:docker
+from:centos:8
+
+%help
+        NAMD 2.14 verbs singualrity container /sw/namd
+
+%setup
+        echo "Setup"
+        mkdir -p ${SINGULARITY_ROOTFS}/sw/namd
+        cp -r /shared/apps/namd/NAMD_2.14_Linux-x86_64-verbs/* ${SINGULARITY_ROOTFS}/sw/namd/
+%post
+        yum --enablerepo=extras install -y -q epel-release
+        yum install libnl3-cli openssh-clients environment-modules -y
+        yum install libibverbs -y
+        groupadd -g 11100 slurm
+        useradd  -m -d /home/slurm -g 11100 -u 11100 -s /bin/false slurm
+%environment
+        export PATH=/sw/namd:$PATH
