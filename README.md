@@ -43,8 +43,17 @@ The lab start with an pre-deployed Azure base environment including the followin
 
 # Lab
 ## Task 1: Create a Slurm HPC Cluster
-## Task 2: 
-## Task 3:
+## Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes 
+## Task 3: Analice the benchmark´s scalability and visualice the results  
+
+# Task 1: Create a Slurm HPC Cluster
+
+
+# Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes
+
+# Task 3: Analice the benchmark´s scalability and visualice the results
+
+
 
 # Appendix - Deploying the MicroHack environment
 To use the Terraform tenplates in this repository to create the MicroHack base environment, the following requirements need to be in place: 
@@ -167,6 +176,10 @@ TF_CLI_ARGS needs to point to the Azure storage account where the terraform back
 ```  
 
 To delete the environment, we recommend you do a terraform destroy using on the command line using the instructions above.
+
+## Aknowledgements
+Many thanks to Ben and Jerry for their cyclecloud-terraform repository that helped us to create the code to setup the infrastructure. Lots of thanbks also to Trevor who did the groud work for the terraform templates.    
+
 
 
 
