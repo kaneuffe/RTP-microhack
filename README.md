@@ -41,17 +41,50 @@ The lab start with an pre-deployed Azure base environment including the followin
 - NAMD application sngularity container.
 - Azure Virtual Machine Image containing the necessary configuration to create a graphical HPC cluster head node.
 
-# Lab
+# Labs
+- Task 1: Create a Slurm HPC Cluster
+- Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes 
+- Task 3: Analice the benchmark´s scalability and visualice the results  
+
 ## Task 1: Create a Slurm HPC Cluster
-## Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes 
-## Task 3: Analice the benchmark´s scalability and visualice the results  
 
-# Task 1: Create a Slurm HPC Cluster
+Select one of your Team´s members to share the Desktop and to login into the CycleCloud server. 
+Use a browser and fill in the provide URL. You need to allow the non-secure connection.
+Once the GUI comes up login with the provided username and password.
 
+![image](https://user-images.githubusercontent.com/57151484/115953714-52e6e480-a4ed-11eb-95f8-dc9e9ec6b360.png)
 
-# Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes
+Login into the CycleCloud server
+Once logged in you can see the CycleCloud graphical user interface, ready to create a new cluster.
 
-# Task 3: Analice the benchmark´s scalability and visualice the results
+![image](https://user-images.githubusercontent.com/57151484/115953724-609c6a00-a4ed-11eb-802a-2fcb3845f909.png)
+
+To create a Slurm Cluster, please click on the Slurm Icon on the left.
+
+![image](https://user-images.githubusercontent.com/57151484/115953731-698d3b80-a4ed-11eb-8f11-5a3faf0989a7.png)
+
+Once the form to create the new cluster pops up, please name the cluster in a way that one can identify your team number (e.g. Slurm-t06).
+
+![image](https://user-images.githubusercontent.com/57151484/115953740-77db5780-a4ed-11eb-89c6-e291570bf7fe.png)
+
+In the next section of the form, we need to define the region, HPC node VM SKU, maximal number of CPU cores and the subnet to deploy into. Please use the information provided to you to set the region, HPC VM Type, max HPC Cores and Subnet ID correctly. The Subnet IT corresponds to the number of the team you belong in (e.g. mh-compute-6-subnet). Please leave the other fields as they are.
+
+![image](https://user-images.githubusercontent.com/57151484/115953760-8cb7eb00-a4ed-11eb-87f9-34aacf761200.png)
+
+On the next screen we will decide where the shared storage for the scheduler and the head nodes resides. This will be the location where the user´s home directory and other shared files will be stored. Change the NFS type to “External NFS” and populate the option NFS IP Address with 10.0.1.4 . Leave mount options empty. 
+The Shared Export Path need to be put according to the number of your team (e.g. /shared-6). Please leave the other fields as they are.
+
+![image](https://user-images.githubusercontent.com/57151484/115953769-993c4380-a4ed-11eb-9183-6db6e31a6573.png)
+ 
+On the Advanced Setting screen, we leave the Slurm Version (20.11.4-1), Job Accounting and Shutdown Policy and Azure Settings as is.
+
+![image](https://user-images.githubusercontent.com/57151484/115953773-a2c5ab80-a4ed-11eb-8408-c3226cfe9675.png)
+
+On the Software section, please change the OS image for the Scheduler to the custom image we are going to indicate you. Select custom image and fill in the name of the image. Leave the HPC and HTC OS versions as they are.
+
+## Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes
+
+## Task 3: Analice the benchmark´s scalability and visualice the results
 
 
 
