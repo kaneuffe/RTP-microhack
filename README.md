@@ -82,6 +82,35 @@ On the Advanced Setting screen, we leave the Slurm Version (20.11.4-1), Job Acco
 
 On the Software section, please change the OS image for the Scheduler to the custom image we are going to indicate you. Select custom image and fill in the name of the image. Leave the HPC and HTC OS versions as they are.
 
+![image](https://user-images.githubusercontent.com/57151484/115953790-cab50f00-a4ed-11eb-915e-762072a7d679.png)
+
+In the advance networking section, please make sure that only Private Head Node is selected: 
+
+![image](https://user-images.githubusercontent.com/57151484/115953795-d6083a80-a4ed-11eb-8dea-1e2d25d421d6.png)
+
+To move to the next page, please click on Next on the below. Cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization. We will use it here to install additional software packages and to disable SElinux as Security Enhancement for Linux that is not required for this non-production environment.  
+The cloud-init script we are going to introduce for all three sections scheduler, hpc and htc is this one:
+
+```bash
+#cloud-config
+packages:
+- nfs-utils
+
+runcmd:
+  - 'setenforce 0'
+  - 'sed -i –follow-symlinks "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config'
+  - 'yum --enablerepo=extras install -y -q epel-release'
+  - 'yum install -y htop'
+  - 'yum install -y singularity'
+```
+
+Please review the configuration with the tutor before you click on Save to save the configuration as some of the inputs cannot be changed easily afterwards.
+Once saved please star the cluster by clicking on the Start button. 
+
+![image](https://user-images.githubusercontent.com/57151484/115953805-ea4c3780-a4ed-11eb-873e-c13d7372b600.png)
+
+Once the scheduler has started without an error we are ready to move to the next task.
+
 ## Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes
 
 ## Task 3: Analice the benchmark´s scalability and visualice the results
