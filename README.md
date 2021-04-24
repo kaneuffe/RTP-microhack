@@ -272,11 +272,11 @@ In continuation, we will run another 3 jobs. We do this in the same way as befor
 
 with the following number of cores and nodes:
 
-|nodes|ntasks|
-|------|-------|
-| 2 | 240 |
-| 4 | 480 |
-| 8 | 960 |
+|job number|nodes|ntasks|
+|-------|-------|-------|
+| 2 | 2 | 240 |
+| 3 | 4 | 480 |
+| 4 | 8 | 960 |
 
 
 
