@@ -67,7 +67,7 @@ Once the form to create the new cluster pops up, please name the cluster in a wa
 
 ![image](https://user-images.githubusercontent.com/57151484/115953740-77db5780-a4ed-11eb-89c6-e291570bf7fe.png)
 
-In the next section of the form, we need to define the region, HPC node VM SKU, maximal number of CPU cores and the subnet to deploy into. Please use the information provided to you to set the region, HPC VM Type, max HPC Cores and Subnet ID correctly. The Subnet IT corresponds to the number of the team you belong in (e.g. mh-compute-6-subnet). Please leave the other fields as they are.
+In the next section of the form, we need to define the region, HPC node VM SKU (e.g. Standard_HB120rs_v2), maximal number of CPU cores (e.g. 960) and the subnet to deploy into. Please use the information provided to you to set the region, HPC VM Type, max HPC Cores and Subnet ID correctly. The Subnet IT corresponds to the number of the team you belong in (e.g. mh-compute-6-subnet). Please leave the other fields as they are.
 
 ![image](https://user-images.githubusercontent.com/57151484/115953760-8cb7eb00-a4ed-11eb-87f9-34aacf761200.png)
 
