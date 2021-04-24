@@ -297,9 +297,9 @@ Collect the WallClock time number and print them over the number of nodes used p
 | 4 | WallClock runtime (4 nodes) |
 | 8 | WallClock runtime (8 nodes) |
 
-Alternatively great a ¨speedup¨ graph by plotting the WallClock runtime for single node devided by the WallClock runtime for N nodes accordxing to this table
+Alternatively great a ¨Speedup¨ graph by plotting the WallClock runtime for single node devided by the WallClock runtime for N nodes accordxing to this table
 
-|number of nodes|speedup|
+|number of nodes|Speedup|
 |-------|-------|
 | 1 | WallClock runtime (1 node) / WallClock runtime (1 node) = 1|
 | 2 | Wall Clock runtime (1 node) / WallClock runtime (2 nodes) |
