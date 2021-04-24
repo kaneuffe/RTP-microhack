@@ -14,7 +14,7 @@ module load mpi/hpcx
 #
 # Switch to workdir
 #
-WORKDIR=/shared/home/kai/namd/namd-benchmarks/1400k-atoms/
+WORKDIR=/shared/home/team06/namd/namd-benchmarks/1400k-atoms/
 cd $WORKDIR
 #
 # Set INPUT variables
@@ -25,7 +25,7 @@ INPUT=benchmark.in
 # Define variables
 #
 CHARMRUN="/sw/namd/charmrun +n ${SLURM_NTASKS} ++mpiexec ++remote-shell srun"
-SINGULARITY="`which singularity` exec --bind /opt,/etc/libibverbs.d,/usr/bin/srun,/var/run/munge,/usr/lib64/libmunge.so.2,/usr/lib64/libmunge.so.2.0.0,/run/munge,/etc/slurm,/sched,/usr/lib64/slurm /shared/home/team01/namd/namd-2.14.sif"
+SINGULARITY="`which singularity` exec --bind /opt,/etc/libibverbs.d,/usr/bin/srun,/var/run/munge,/usr/lib64/libmunge.so.2,/usr/lib64/libmunge.so.2.0.0,/run/munge,/etc/slurm,/sched,/usr/lib64/slurm /shared/home/team06/namd/namd-2.14.sif"
 NAMD2="/sw/namd/namd2"
 
 export SINGULARITYENV_PATH=${PATH}
