@@ -153,23 +153,23 @@ Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
 ```
 ### Download required files and the namd Singularity container
 
-In the next step create a namd directory and switch into it:
+In the next step create a namd directory and switch into it.
 
 ```Shell
 [team6@ip-0A000704 ~]$ mkdir namd
 [team6@ip-0A000704 ~]$ cd namd
 ```
-Download the job submission namd-sjob.sh script 
+Download the job submission namd-sjob.sh script.
 
 ```Shell
 [team6@ip-0A000704 namd]$ wget https://github.com/kaneuffe/RTP-microhack/tree/main/scripts/namd-sjob.sh
 ```
-and the download-benchmak.sh script from github:
+and the download-benchmak.sh script from github.
 
 ```Shell
 [team6@ip-0A000704 namd]$ wget https://github.com/kaneuffe/RTP-microhack/tree/main/scripts/download_benchmarks.sh
 ```
-Once downloaded we execute the download_benchmarks.sh script:
+Once downloaded we execute the download_benchmarks.sh script.
 
 ```Shell
 [team6@ip-0A000704 namd]$ . ./download_benchmark.sh
@@ -187,7 +187,7 @@ Now let´s download the already prepared namd singularity container from the Azu
 ```Shell
 [team6@ip-0A000704 namd]$ singularity pull --docker-username USERNAME --docker-password PASSWORD namd-2.14 oras://mhacr21.azurecr.io/namd/namd-2.14:latest
 ```
-### Submit the first Slurm namd job:
+### Submit the first Slurm namd job
 
 Once you downloaded the namd container we need to modify the jobs submission script namd-sjobs.sh, modifying the total number of CPU cores, number olf compute nodes and the path to the singularity container. 
 Please change line 5, line 6 and line 28 setting the number of nodes to 1, number of ntasks to 120 and the path of the namd container to /shared/home/TEAM_USERNAME/namd/namd-2.14.sif.
@@ -261,6 +261,15 @@ Once the job has finished it disappears from the output:
 Now we can check the job´s output (e.g. namd_3.out) and error (e.g. namd_3.err) files. The error file should be empty. If it is not, please fix the error first before continuing.
 
 ### Scalability test
+
+In continuation, we will run another 3 jobs with the following number of cores and nodes:
+
+|node|ntasks|
+|------|-------|
+| 2 | 240 |
+| 4 | 480 |
+| 8 | 960 |
+
 
 
 
