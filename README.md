@@ -88,8 +88,25 @@ In the advance networking section, please make sure that only Private Head Node 
 
 ![image](https://user-images.githubusercontent.com/57151484/115953795-d6083a80-a4ed-11eb-8dea-1e2d25d421d6.png)
 
-To move to the next page, please click on Next on the below. Cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization. We will use cloud-init to install additional software packages and to disable SElinux. SELinux (Security Enhancement for Linux) is not required for this non-production environment.  
-This is the cloud-init script we are going to  use for all three sections, scheduler, hpc and htc:
+To move to the next page, please click on Next on the below. Cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization. We will use cloud-init to install additional software packages and to disable SElinux. SELinux (Security Enhancement for Linux) is not required for this non-production environment. We also enable the password authetication on the scheduler node for this micro hack but do recommend to only use ssh private keys instead in a production environment in combination with multi-factor-authenticatin.
+
+This is the cloud-init script we are going to  use for the scheduler:
+
+```YAML
+#cloud-config
+packages:
+- nfs-utils
+
+runcmd:
+  - 'setenforce 0'
+  - 'sed -i --follow-symlinks "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config'
+  - 'yum --enablerepo=extras install -y -q epel-release'
+  - 'yum install -y htop'
+  - 'yum install -y singularity'
+  - 'sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config'
+  - 'systemctl restart sshd'
+```
+For the hpc and htc section we use a slightly different version of the script as ssh password authentication does not need to be disabled:
 
 ```YAML
 #cloud-config
