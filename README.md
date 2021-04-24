@@ -288,7 +288,15 @@ Gather the namd job runtimes by running the folowing command on the bash cli:
 namd_2.out:WallClock: NNNNNNNN  CPUTime: MMMMMMMM  Memory: 799.335938 MB
 ...
 ```
-Collect the WallClock time number and print them over the number of nodes used per job by using your favourite application (e.g. Microsoft Excel)  
+Collect the WallClock time number and print them over the number of nodes used per job by using your favourite application (e.g. Microsoft Excel) 
+
+|number of nodes| WallCLock runtime|
+|-------|-------|
+| 1 | WallClock runtime (1 node)|
+| 2 | WallClock runtime (2 nodes) |
+| 4 | WallClock runtime (4 nodes) |
+| 8 | WallClock runtime (8 nodes) |
+
 Alternatively great a ¨speedup¨ graph by plotting the WallClock runtime for single node devided by the WallClock runtime for N nodes accordxing to this table
 
 |number of nodes|speedup|
