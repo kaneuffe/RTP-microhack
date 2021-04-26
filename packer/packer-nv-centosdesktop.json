@@ -1,0 +1,45 @@
+{
+  "variables": {
+    "client_id": "{{env `ARM_CLIENT_ID`}}",
+    "client_secret": "{{env `ARM_CLIENT_SECRET`}}",
+    "subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
+    "tenant_id": "{{env `ARM_TENANT_ID`}}",
+    "managed_image_name": "{{env `MANAGED_IMAGE_NAME`}}",
+    "managed_image_resource_group_name": "{{env `RESOURCE_GROUP_NAME`}}"
+  },
+
+  "builders": [{
+    "type": "azure-arm",
+    "client_id": "{{user `client_id`}}",
+    "client_secret": "{{user `client_secret`}}",
+    "subscription_id": "{{user `subscription_id`}}",
+    "managed_image_name": "{{user `managed_image_name`}}",
+    "managed_image_resource_group_name": "{{user `managed_image_resource_group_name`}}",
+
+    "os_type": "Linux",
+    "image_publisher": "OpenLogic",
+    "image_offer": "CentOS-HPC",
+    "image_sku": "7.7",
+
+    "azure_tags": {
+        "environment": "production"
+    },
+
+    "location": "West Europe",
+    "vm_size": "Standard_NV6"
+  }],
+  "provisioners": [
+    {
+    "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
+    "inline": [
+      "yum install -y cloud-init",
+      "wget https://raw.githubusercontent.com/kaneuffe/RTP-microhack/main/packer/rtp-microhack-desktop.sh -O /tmp/rtp-microhack-desktop.sh",
+      "chmod +x /tmp/rtp-microhack-desktop.sh",
+      "sudo /tmp/rtp-microhack-desktop.sh",
+
+      "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
+     ],
+    "inline_shebang": "/bin/sh -x",
+    "type": "shell"
+  }]
+}
