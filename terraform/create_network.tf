@@ -121,6 +121,17 @@ resource "azurerm_network_security_group" "microhack_compute_subnet_nsg" {
         source_address_prefixes    = [var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2]
         destination_address_prefix = "*"
     }
+        security_rule {
+        name                       = "VNC"
+        priority                   = 1003
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "5800-5999"
+        source_address_prefixes    = [var.cyclecloud_public_access_address_prefix1, var.cyclecloud_public_access_address_prefix2]
+        destination_address_prefix = "*"
+    }
 }
 
 # Assign the network security group to the CC subnet
