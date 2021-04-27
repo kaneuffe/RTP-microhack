@@ -123,7 +123,7 @@ resource "azurerm_network_security_group" "microhack_compute_subnet_nsg" {
     }
         security_rule {
         name                       = "VNC"
-        priority                   = 1003
+        priority                   = 1004
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
