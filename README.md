@@ -23,7 +23,7 @@ After completing this MicroHack you will:
 -	Know how to deploy a Slurm HPC cluster on Azure through Azure CycleCloud
 - Run an HPC application on a Slurm HPC cluster
 
-# Pre-Requeisites 
+# Pre-Requisites 
 This MicroHack explores the creation of a High Performance Computing (HPC) Cluster on Microsoft Azure, to run the NAMD application leveraging a singularity container and to visualize the results ones the application ran.
 
 ![image](images/microhack_architecture.png)
