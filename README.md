@@ -354,10 +354,10 @@ Download the VMD application from here:
 https://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1475
 ```
 
-Next, upload the VMD application to the /tmp folder on your scheduler node (e.g. using WinSCP, scp, sftp), and then run the following commands: 
+Next, upload the VMD application to the /tmp folder on your scheduler node (e.g. using WinSCP, scp, sftp), and then run the following commands (you need to be the root user to execute these - e.g. "sudo su -": 
 ```Shell
 cd /tmp && tar xzvf /tmp/vmd*.tar.gz
-cd /tmp/vmd* && ./configure && src/make install
+cd /tmp/vmd* && ./configure && cd src && make install
 ```
 
 To log in to the machine with VNC in a web browser, navigate to the following URL: 
