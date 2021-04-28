@@ -144,9 +144,6 @@ By clicking on Connect below, a popup window appears that will show you the IP a
 
 ![image](https://user-images.githubusercontent.com/57151484/116396010-1edd2d80-a825-11eb-9ffb-d105f9fb0d21.png)
 
-
-![image](https://user-images.githubusercontent.com/57151484/115963935-18e40580-a522-11eb-9901-6f2709817acd.png)
-
 Using the IP adreess and the username we can use out favourite SSH client to connect to the scheduler.
 Once you are logged into the session you see the Linux command line prompt:Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
 
