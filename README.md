@@ -212,7 +212,7 @@ The script will download the benchmark input files and move it to a folder calle
 Now let´s download the already prepared namd singularity container from the Azure Container Registry using the container registry USERNAME and PASSWORD provided to you.
 
 ```Shell
-[team6@ip-0A000704 namd]$ singularity pull --docker-username USERNAME --docker-password PASSWORD namd-2.14 oras://mhacr21.azurecr.io/namd/namd-2.14:latest
+[team6@ip-0A000704 namd]$ singularity pull --docker-username USERNAME --docker-password PASSWORD namd-2.14 oras://mhacr21.azurecr.io/namd/namd-2.14.sif:latest
 ```
 ### Submit the first Slurm namd job
 
