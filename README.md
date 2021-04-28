@@ -1,4 +1,4 @@
-# RTP-microshack
+# RTP-microhack
 A Github repository for the Azure CycleCloud RTP MicroHack
 
 # Contents
@@ -357,12 +357,12 @@ cd /tmp/vmd* && ./configure && src/make install
 ```
 
 To log in to the machine with VNC in a web browser, navigate to the following URL: 
+```Shell
 http://<your-public-ip>:6080/vnc.html?host=<your-public-ip>&port=6080
+```
 
 You will need to log in with the password shared with you in the tutorial.  Once you then access the desktop, you can open a terminal and type the "vmd" command to execute the VMD graphical application.  You will then be able to analyze your data.
 
-
- ![image](https://user-images.githubusercontent.com/7439582/116417143-e9d7d780-a832-11eb-83ac-e883feeae04d.png)
 
 
 # Appendix - Deploying the MicroHack environment
