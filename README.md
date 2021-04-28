@@ -134,9 +134,9 @@ Once the cluster came up without any issues you can see in the Azure CycleCloud 
 
 ![image](https://user-images.githubusercontent.com/57151484/115963915-ffdb5480-a521-11eb-9156-1e721208db34.png)
 
-### Configure an ssh key
+### Configure an ssh key connection
 
-Create an ssh key on the command line, using one of the supported protocols. In this example, we'll use simple rsa:
+On your local machine, create an ssh key on the command line, using one of the supported protocols. In this example, we'll use simple rsa:
 ```
 ssh-keygen -t rsa -b 4096 -C "a custom comment"
 ```
@@ -216,8 +216,12 @@ Now let´s download the already prepared namd singularity container from the Azu
 ```
 ### Submit the first Slurm namd job
 
-Once you downloaded the namd container we need to modify the jobs submission script namd-sjobs.sh, modifying the total number of CPU cores, number olf compute nodes and the path to the singularity container. 
-Please change line 5, line 6 and line 28 setting the number of nodes to 1, number of ntasks to 120 and the path of the namd container to /shared/home/TEAM_USERNAME/namd/namd-2.14.sif.
+Once you downloaded the namd container we need to modify the jobs submission script namd-sjobs.sh, modifying the total number of CPU cores, number of compute nodes, working directory, and the path to the singularity container. 
+Please change: 
+- line 5 (number of **nodes**) to `1`, 
+- line 6 (number of **ntasks**) to `120`, 
+- line 17 (**WORKDIR**) to the correct user home: `/shared/home/TEAM_USERNAME/namd...` 
+- end of line 28: (the path of the namd container) to `/shared/home/TEAM_USERNAME/namd/namd-2.14.sif`.
 
 ```Shell-script
 #!/bin/bash
@@ -457,7 +461,7 @@ TF_CLI_ARGS needs to point to the Azure storage account where the terraform back
 
 To delete the environment, we recommend you do a terraform destroy using on the command line using the instructions above.
 
-## Aknowledgements
+## Acknowledgements
 Many thanks to Ben and Jerry for their cyclecloud-terraform repository that helped us to create the code to setup the infrastructure. Lots of thanbks also to Trevor who did the groud work for the terraform templates.    
 
 
