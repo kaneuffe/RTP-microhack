@@ -71,7 +71,8 @@ In the next section of the form, we need to define the region, HPC node VM SKU (
 
 ![image](https://user-images.githubusercontent.com/57151484/115953760-8cb7eb00-a4ed-11eb-87f9-34aacf761200.png)
 
-On the next screen we will decide where the shared storage for the scheduler and the head nodes resides. This will be the location where the user´s home directory and other shared files will be stored. Change the NFS type to “External NFS” and populate the option NFS IP Address with 10.0.1.4 . Leave mount options empty. 
+On the next screen we will decide where the shared storage for the scheduler and the head nodes resides. This will be the location where the user´s home directory and oth![115963935-18e40580-a522-11eb-9901-6f2709817acd](https://user-images.githubusercontent.com/57151484/116395710-bf7f1d80-a824-11eb-8a8a-53ee62903199.png)
+er shared files will be stored. Change the NFS type to “External NFS” and populate the option NFS IP Address with 10.0.1.4 . Leave mount options empty. 
 The Shared Export Path need to be put according to the number of your team (e.g. /shared-6). Please leave the other fields as they are.
 
 ![image](https://user-images.githubusercontent.com/57151484/115953769-993c4380-a4ed-11eb-9183-6db6e31a6573.png)
@@ -141,6 +142,9 @@ By clicking on the scheduler line, another box will be displayed below, which co
 ![image](https://user-images.githubusercontent.com/57151484/115963927-0ec20700-a522-11eb-882c-5d0d9a8c38b2.png)
 
 By clicking on Connect below, a popup window appears that will show you the IP address to connect trough an SSH client to the scheduler node.
+
+![image](https://user-images.githubusercontent.com/57151484/116396010-1edd2d80-a825-11eb-9ffb-d105f9fb0d21.png)
+
 
 ![image](https://user-images.githubusercontent.com/57151484/115963935-18e40580-a522-11eb-9901-6f2709817acd.png)
 
