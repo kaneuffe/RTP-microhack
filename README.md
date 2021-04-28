@@ -349,8 +349,12 @@ dos2unix /tmp/rtp-microhack-desktop.sh
 chmod +x /tmp/rtp-microhack-desktop.sh
 /tmp/rtp-microhack-desktop.sh
 ```
+Download the VMD application from here: 
+```Shell
+https://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1475
+```
 
-Next, upload the VMD application to the /tmp folder, and run the following commands: 
+Next, upload the VMD application to the /tmp folder on your scheduler node (e.g. using WinSCP, scp, sftp), and then run the following commands: 
 ```Shell
 cd /tmp && tar xzvf /tmp/vmd*.tar.gz
 cd /tmp/vmd* && ./configure && src/make install
