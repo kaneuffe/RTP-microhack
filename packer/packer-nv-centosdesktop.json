@@ -37,7 +37,7 @@
     {
     "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
     "inline": [
-      "yum install -y cloud-init",
+      "yum install -y cloud-init dos2unix",
       "wget https://raw.githubusercontent.com/kaneuffe/RTP-microhack/main/scripts/centos81-desktop-xfce-novnc.sh -O /tmp/rtp-microhack-desktop.sh",
       "dos2unix /tmp/rtp-microhack-desktop.sh",
       "chmod +x /tmp/rtp-microhack-desktop.sh",
