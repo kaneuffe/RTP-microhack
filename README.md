@@ -44,7 +44,7 @@ The lab start with an pre-deployed Azure base environment including the followin
 # Labs
 - Task 1: Create a Slurm HPC Cluster
 - Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes 
-- Task 3: Analice the benchmark´s scalability and visualice the results  
+- Task 3: Analyze the benchmark´s scalability and visualize the results  
 
 ## Task 1: Create a Slurm HPC Cluster
 
