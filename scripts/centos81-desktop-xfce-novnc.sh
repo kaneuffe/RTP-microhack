@@ -1,16 +1,16 @@
 #!/bin/bash
 
-dnf -y install epel-release
-dnf -y groupinstall Xfce
+yum -y install epel-release
+yum -y groupinstall Xfce
 systemctl disable gdm
 systemctl set-default graphical
 
-dnf -y install libglvnd-devel elfutils-libelf-devel
+yum -y install libglvnd-devel elfutils-libelf-devel
 grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0"
 
 systemctl isolate graphical
 
-dnf -y install tigervnc-server
+yum -y install tigervnc-server
 useradd msadmin
 usermod --password $(echo "M1cr0s0ft2020" | openssl passwd -1 -stdin) msadmin
 mkdir -p ~msadmin/.vnc
@@ -32,7 +32,7 @@ cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:0.servi
 systemctl enable vncserver@:0 --now
 
 ## Install NoVNC 
-dnf -y install snapd
+yum -y install snapd
 systemctl enable --now snapd.socket
 ln -s /var/lib/snapd/snap /snap
 snap install novnc
