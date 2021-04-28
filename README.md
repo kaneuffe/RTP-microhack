@@ -161,7 +161,7 @@ By clicking on the scheduler line, another box will be displayed below, which co
 
 By clicking on Connect below, a popup window appears that will show you the IP address to connect trough an SSH client to the scheduler node.
 
-![image](https://user-images.githubusercontent.com/57151484/115963935-18e40580-a522-11eb-9901-6f2709817acd.png)
+![image](https://user-images.githubusercontent.com/57151484/116396010-1edd2d80-a825-11eb-9ffb-d105f9fb0d21.png)
 
 Using the IP address and the username we can use out favourite SSH client to connect to the scheduler.
 

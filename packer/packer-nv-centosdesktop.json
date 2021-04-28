@@ -30,13 +30,21 @@
   }],
   "provisioners": [
     {
+       "destination": "/tmp/",
+       "source": "vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz",
+       "type": "file"
+    },
+    {
     "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
     "inline": [
-      "yum install -y cloud-init",
+      "yum install -y cloud-init dos2unix",
       "wget https://raw.githubusercontent.com/kaneuffe/RTP-microhack/main/scripts/centos81-desktop-xfce-novnc.sh -O /tmp/rtp-microhack-desktop.sh",
+      "dos2unix /tmp/rtp-microhack-desktop.sh",
       "chmod +x /tmp/rtp-microhack-desktop.sh",
       "sudo /tmp/rtp-microhack-desktop.sh",
-
+      "cd /tmp && tar xzvf /tmp/vmd*.tar.gz",
+      "cd /tmp/vmd* && ./configure && src/make install",
+      
       "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
      ],
     "inline_shebang": "/bin/sh -x",
