@@ -84,7 +84,7 @@ On the Software section, please change the OS image for the Scheduler to the cus
 
 ![image](https://user-images.githubusercontent.com/57151484/115953790-cab50f00-a4ed-11eb-915e-762072a7d679.png)
 
-In the advance networking section, please make sure that only Private Head Node is selected: 
+In the advance networking section, please make sure that only Public Head Node is selected: 
 
 ![image](https://user-images.githubusercontent.com/57151484/115953795-d6083a80-a4ed-11eb-8dea-1e2d25d421d6.png)
 
@@ -95,7 +95,7 @@ This is the cloud-init script we are going to  use for the scheduler:
 ```YAML
 #cloud-config
 packages:
-- nfs-utils
+  - nfs-utils
 
 runcmd:
   - 'setenforce 0'
@@ -122,7 +122,7 @@ runcmd:
 ```
 
 Please review the configuration with the tutor before you click on Save to save the configuration as some of the inputs cannot be changed easily afterwards.
-Once saved please star the cluster by clicking on the Start button. 
+Once saved please start the cluster by clicking on the Start button. 
 
 ![image](https://user-images.githubusercontent.com/57151484/115953805-ea4c3780-a4ed-11eb-873e-c13d7372b600.png)
 
@@ -130,9 +130,28 @@ Once the scheduler has started without an error we are ready to move to the next
 
 ## Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes
 
-Once the cluster came up without any issues you can see in the Azure CycleCloud GUI that the status of the scheduler show a green bar and the two node arrays, hpc and htc a grey one.
+Once the cluster came up without any issues you can see in the Azure CycleCloud GUI that the status of the scheduler show a green bar and the two node arrays, hpc and htc, show a grey one.
 
 ![image](https://user-images.githubusercontent.com/57151484/115963915-ffdb5480-a521-11eb-9156-1e721208db34.png)
+
+### Configure an ssh key
+
+Create an ssh key on the command line, using one of the supported protocols. In this example, we'll use simple rsa:
+```
+ssh-keygen -t rsa -b 4096 -C "a custom comment"
+```
+Follow the prompts to create that key at a known location, e.g `~/.ssh/id_rsa_rtphack_teamX`
+
+Copy the public key to the clipboard, for example by printing it to screen:
+```
+cat ~/.ssh/id_rsa_rtphack_teamX
+```
+
+Navigate to your team's profile in the top right corner of Cycle Cloud, click `Edit Profile`, and paste it into the `SSH Public Key` field. 
+
+![image](./images/ssh-settings.png)
+
+Click `Save`.
 
 ### Connect to the scheduler node
 
@@ -144,8 +163,16 @@ By clicking on Connect below, a popup window appears that will show you the IP a
 
 ![image](https://user-images.githubusercontent.com/57151484/116396010-1edd2d80-a825-11eb-9ffb-d105f9fb0d21.png)
 
-Using the IP adreess and the username we can use out favourite SSH client to connect to the scheduler.
-Once you are logged into the session you see the Linux command line prompt:Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
+Using the IP address and the username we can use out favourite SSH client to connect to the scheduler.
+
+> *Note*: if you used a non-standard ssh key name, make sure that is provided when connecting with ssh, e.g :
+    `
+    ssh teamX@<scheduler-ip> -i ~/.ssh/id_rsa_rtphack_teamX
+    `
+
+Once you are logged into the session you see the Linux command line prompt:
+
+If you have previously logged in, you'll see a line giving details: Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
 
 ```Shell
 Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
@@ -162,12 +189,12 @@ In the next step create a namd directory and switch into it.
 Download the job submission namd-sjob.sh script.
 
 ```Shell
-[team6@ip-0A000704 namd]$ wget https://github.com/kaneuffe/RTP-microhack/tree/main/scripts/namd-sjob.sh
+[team6@ip-0A000704 namd]$ wget https://raw.githubusercontent.com/kaneuffe/RTP-microhack/main/scripts/namd-sjob.sh
 ```
 and the download-benchmak.sh script from github.
 
 ```Shell
-[team6@ip-0A000704 namd]$ wget https://github.com/kaneuffe/RTP-microhack/tree/main/scripts/download_benchmarks.sh
+[team6@ip-0A000704 namd]$ wget https://raw.githubusercontent.com/kaneuffe/RTP-microhack/main/scripts/download_benchmarks.sh
 ```
 Once downloaded we execute the download_benchmarks.sh script.
 
