@@ -337,6 +337,32 @@ Alternatively great a ¨Speedup¨ graph by plotting the WallClock runtime for si
 | 4 | Wall Clock runtime (1 node) / WallClock runtime (4 nodes) |
 | 8 | Wall Clock runtime (1 node) / WallClock runtime (8 nodes) |
 
+### Visualise
+To visualise the results, we will use a graphical login capability on the scheduler node of the cluster, and then use the VMD graphical application. 
+
+Log in to the scheduler node of the cluster, and become the root user. 
+
+Next, try the following to install the graphical desktop (takes about 8 minutes):
+```Shell
+wget https://raw.githubusercontent.com/kaneuffe/RTP-microhack/main/scripts/centos81-desktop-xfce-novnc.sh -O /tmp/rtp-microhack-desktop.sh
+dos2unix /tmp/rtp-microhack-desktop.sh
+chmod +x /tmp/rtp-microhack-desktop.sh
+/tmp/rtp-microhack-desktop.sh
+```
+
+Next, upload the VMD application to the /tmp folder, and run the following commands: 
+```Shell
+cd /tmp && tar xzvf /tmp/vmd*.tar.gz
+cd /tmp/vmd* && ./configure && src/make install
+```
+
+To log in to the machine with VNC in a web browser, navigate to the following URL: 
+http://<your-public-ip>:6080/vnc.html?host=<your-public-ip>&port=6080
+
+You will need to log in with the password shared with you in the tutorial.  Once you then access the desktop, you can open a terminal and type the "vmd" command to execute the VMD graphical application.  You will then be able to analyze your data.
+
+
+ ![image](https://user-images.githubusercontent.com/7439582/116417143-e9d7d780-a832-11eb-83ac-e883feeae04d.png)
 
 
 # Appendix - Deploying the MicroHack environment
