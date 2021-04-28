@@ -16,7 +16,7 @@ A Github repository for the Azure CycleCloud RTP MicroHack
 An university department wants to run a set of molecular dynamics simulations as part of a COVID-19 research initiative within a reasonable amount of time. They decide to use the NAMD (Not (just) Another Molecular Dynamics program) software running on a High Performance Computing (HPC) cluster. As they do not have this infrastructure on-premises, they decide to leverage Microsoft Azure Cloud.
 
 # Objectives
-This MicroHack is a walkthrough of creating an High Performance Computing (HPC) cluster on Azure and to run a typical HPC workload on it including the visualization of the redults.
+This MicroHack is a walkthrough of creating an High Performance Computing (HPC) cluster on Azure and to run a typical HPC workload on it including the visualization of the results.
 The type of HPC workload manager we are going to use in this MicroHack is Slurm (Simple Linux Utility for Resource Management - https://slurm.schedmd.com/cpu_management.html). 
 
 After completing this MicroHack you will:
@@ -28,17 +28,17 @@ This MicroHack explores the creation of a High Performance Computing (HPC) Clust
 
 ![image](images/microhack_architecture.png)
 
-The lab start with an pre-deployed Azure base environment including the following components:
+The lab starts with a pre-deployed Azure base environment including the following components:
 - Virtual Network (VNET).
 - Subnet to host the Azure CycleCloud server VM.
 - One compute subnet per team  a HPC Cluster per team.
 - One storage subnet pre team the HPC Cluster nodes to access the Azure NetApp NFS volumes.
-- Set of Network Security Groups to limit the internet access to the environment. 
+- Set of Network Security Groups to limit the Internet access to the environment. 
 - Azure Blob Storage account to store the Azure CycleCloud project data.
 - Azure NetApp Files (ANF) storage account with one capacity pool and a pre-created NFS volume for each of the teams.
-- Azure CycleCloud server VM with and attached Azure Active Directory Managed Identity to be authorized to create HPC Cluster. 
+- Azure CycleCloud server VM with an attached Azure Active Directory (AAD) Managed Identity to be authorized to create HPC Clusters. 
 - Azure container registry (ACR) to host the NAMD application singularity container.
-- NAMD application sngularity container.
+- NAMD application singularity container.
 - Azure Virtual Machine Image containing the necessary configuration to create a graphical HPC cluster head node.
 
 # Labs
@@ -49,8 +49,8 @@ The lab start with an pre-deployed Azure base environment including the followin
 ## Task 1: Create a Slurm HPC Cluster
 
 Select one of your Team´s members to share the Desktop and to login into the CycleCloud server. 
-Use a browser and fill in the provide URL. You need to allow the non-secure connection.
-Once the GUI comes up login with the provided username and password.
+Use a browser and fill in the provided URL. You need to allow the non-secure connection.
+Once the GUI comes up, login with the provided username and password.
 
 ![image](https://user-images.githubusercontent.com/57151484/115953714-52e6e480-a4ed-11eb-95f8-dc9e9ec6b360.png)
 
