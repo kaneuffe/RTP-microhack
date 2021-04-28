@@ -71,7 +71,7 @@ In the next section of the form, we need to define the region, HPC node VM SKU (
 
 ![image](https://user-images.githubusercontent.com/57151484/115953760-8cb7eb00-a4ed-11eb-87f9-34aacf761200.png)
 
-On the next screen we will decide where the shared storage for the scheduler and the head nodes resides. This will be the location where the user´s home directory and other shared files will be stored. Change the NFS type to “External NFS” and populate the option NFS IP Address with 10.0.1.4 . Leave mount options empty. 
+On the next screen we will decide where the shared storage for the scheduler and the head nodes resides. This will be the location where the user´s home directory and other shared files will be stored. Change the NFS type to “External NFS” and populate the option NFS IP Address with 10.0.1.4. Leave mount options empty. 
 The Shared Export Path need to be put according to the number of your team (e.g. /shared-6). Please leave the other fields as they are.
 
 ![image](https://user-images.githubusercontent.com/57151484/115953769-993c4380-a4ed-11eb-9183-6db6e31a6573.png)
@@ -80,17 +80,17 @@ On the Advanced Setting screen, we leave the Slurm Version (20.11.4-1), Job Acco
 
 ![image](https://user-images.githubusercontent.com/57151484/115953773-a2c5ab80-a4ed-11eb-8408-c3226cfe9675.png)
 
-On the Software section, please change the OS image for the Scheduler to the custom image we are going to indicate you. Select custom image and fill in the name of the image. Leave the HPC and HTC OS versions as they are.
+On the Software section, please change the OS image for the Scheduler to the custom image we are going to tell you. Select custom image and fill in the name of the image. Leave the HPC and HTC OS versions as they are.
 
 ![image](https://user-images.githubusercontent.com/57151484/115953790-cab50f00-a4ed-11eb-915e-762072a7d679.png)
 
-In the advance networking section, please make sure that only Public Head Node is selected: 
+In the advanced networking section, please make sure that only Public Head Node is selected: 
 
 ![image](https://user-images.githubusercontent.com/57151484/115953795-d6083a80-a4ed-11eb-8dea-1e2d25d421d6.png)
 
-To move to the next page, please click on Next on the below. Cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization. We will use cloud-init to install additional software packages and to disable SElinux. SELinux (Security Enhancement for Linux) is not required for this non-production environment. We also enable the password authetication on the scheduler node for this micro hack but do recommend to only use ssh private keys instead in a production environment in combination with multi-factor-authenticatin.
+To move to the next page, please click on Next on the below. Cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization. We will use cloud-init to install additional software packages and to disable SElinux. SELinux (Security Enhancement for Linux) is not required for this non-production environment. We also enable the password authetication on the scheduler node for this micro hack but do recommend to only use ssh private keys instead in a production environment in combination with multi-factor-authentication.
 
-This is the cloud-init script we are going to  use for the scheduler:
+This is the cloud-init script we are going to use for the scheduler:
 
 ```YAML
 #cloud-config
@@ -130,7 +130,7 @@ Once the scheduler has started without an error we are ready to move to the next
 
 ## Task 2: Download the NAMD singularity container and run a namd benchmark using different nmumbers of nodes
 
-Once the cluster came up without any issues you can see in the Azure CycleCloud GUI that the status of the scheduler show a green bar and the two node arrays, hpc and htc, show a grey one.
+Once the cluster came up without any issues, you can see in the Azure CycleCloud GUI that the status of the scheduler shows a green bar, and that the two node arrays (hpc and htc), show a grey one.
 
 ![image](https://user-images.githubusercontent.com/57151484/115963915-ffdb5480-a521-11eb-9156-1e721208db34.png)
 
@@ -159,11 +159,11 @@ By clicking on the scheduler line, another box will be displayed below, which co
 
 ![image](https://user-images.githubusercontent.com/57151484/115963927-0ec20700-a522-11eb-882c-5d0d9a8c38b2.png)
 
-By clicking on Connect below, a popup window appears that will show you the IP address to connect trough an SSH client to the scheduler node.
+By clicking on Connect below, a popup window appears that will show you the IP address to connect through an SSH client to the scheduler node.
 
 ![image](https://user-images.githubusercontent.com/57151484/116396010-1edd2d80-a825-11eb-9ffb-d105f9fb0d21.png)
 
-Using the IP address and the username we can use out favourite SSH client to connect to the scheduler.
+Using the IP address and the username we can use our favourite SSH client to connect to the scheduler.
 
 > *Note*: if you used a non-standard ssh key name, make sure that is provided when connecting with ssh, e.g :
     `
@@ -209,14 +209,14 @@ The script will download the benchmark input files and move it to a folder calle
 1400k-atoms  20k-atoms  3000k-atoms  465k-atoms  61k-atoms  namd
 ```
 
-Now let´s download the already prepared namd singularity container from the Azure Container Registry using the container registry USERNAME and PASSWORD provided to you.
+Now let´s download the already prepared namd singularity container from the Azure Container Registry, using the container registry USERNAME and PASSWORD provided to you.
 
 ```Shell
 [team6@ip-0A000704 namd]$ singularity pull --docker-username USERNAME --docker-password PASSWORD namd-2.14.sif oras://mhacr21.azurecr.io/namd/namd-2.14.sif:latest
 ```
 ### Submit the first Slurm namd job
 
-Once you downloaded the namd container we need to modify the jobs submission script namd-sjobs.sh, modifying the total number of CPU cores, number of compute nodes, working directory, and the path to the singularity container. 
+Once you have downloaded the namd container, we need to modify the jobs submission script namd-sjobs.sh, modifying the total number of CPU cores, number of compute nodes, working directory, and the path to the singularity container. 
 Please change: 
 - line 5 (number of **nodes**) to `1`, 
 - line 6 (number of **ntasks**) to `120`, 
@@ -309,10 +309,10 @@ with the following number of cores and nodes:
 | 3 | 4 | 480 |
 | 4 | 8 | 960 |
 
-## Task 3: Analize the benchmark´s scalability and visualize the namd results
+## Task 3: Analyze the benchmark´s scalability and visualize the namd results
 
 ### Scalability
-Gather the namd job runtimes by running the folowing command on the bash cli:
+Gather the namd job runtimes by running the following command on the bash cli:
 
 ```Shell
 [team6@ip-0A000704 namd]$ grep WallC *.out
@@ -340,12 +340,12 @@ Alternatively great a ¨Speedup¨ graph by plotting the WallClock runtime for si
 
 
 # Appendix - Deploying the MicroHack environment
-To use the Terraform tenplates in this repository to create the MicroHack base environment, the following requirements need to be in place: 
+To use the Terraform templates in this repository to create the MicroHack base environment, the following requirements need to be in place: 
 
 ## Requirements
 
 ### Terraform state container
-The terraform templetes within this repository require a previously created Azure Resource Grou, Storage Account and a BLOB Storage Container as you can see within the main.tf template:
+The terraform templates within this repository require a previously created Azure Resource Group, Storage Account and a BLOB Storage Container as you can see within the main.tf template:
 
 ```HCL
 ...
@@ -360,7 +360,7 @@ terraform {
 ...
 ```
 
-You can create these iteam using the Azure Portal or the Azure client:
+You can create these items using the Azure Portal or the Azure client:
 
 ```shell-script
 #!/bin/bash
@@ -388,7 +388,7 @@ echo "access_key: $ACCOUNT_KEY"
 The name of the storage account needs to be defined within an environment variable or GitHub secret in the following.
 
 ### Permissions
-To be able to run this terraform template yourself or a already created service principle need to have the following permissions:
+To be able to run this terraform template yourself or an already created service principle, you need to have the following permissions:
 - OWNER rights for the subscription in scope or
 - CONTRIBUTOR and USER ACCESS ADMINISTRATOR for the subscription in scope
 
@@ -424,7 +424,7 @@ git clone https://github.com/kaneuffe/RTP-microhack
 ```Shell
 terraform init
 ```
-7) Fix alll issues if there are any and run terraform plan:
+7) Fix all issues if there are any and run terraform plan:
 ```Shell
 terraform plan
 ```
@@ -432,13 +432,13 @@ terraform plan
 ```Shell
 terraform apply
 ```
-9) If there are mayor errors or run terraform destroy and fix the issues before running terraform plan and apply again. You can also use terraform destroy once you want to get rid of the environment. 
+9) If there are major errors, run terraform destroy and fix the issues before running terraform plan and apply again. You can also use terraform destroy once you want to get rid of the environment. 
 ```Shell
 terraform destroy
 ```
 
 ## Alternative GitHub actions
-Instead of running terraform on a terminal on you compute you could use the GitHub actions by cloning the whole repository importing it into a new GitHub repository within your GitHub account.
+Instead of running terraform on a terminal on you computer, you could use the GitHub actions by cloning the whole repository, importing it into a new GitHub repository within your GitHub account.
 To run the terraform template using the GitHub actions within the workflows directory, the following secrets need to be defined:
 
 - TF_ARM_CLIENT_ID
@@ -462,7 +462,7 @@ TF_CLI_ARGS needs to point to the Azure storage account where the terraform back
 To delete the environment, we recommend you do a terraform destroy using on the command line using the instructions above.
 
 ## Acknowledgements
-Many thanks to Ben and Jerry for their cyclecloud-terraform repository that helped us to create the code to setup the infrastructure. Lots of thanbks also to Trevor who did the groud work for the terraform templates.    
+Many thanks to Ben and Jerry for their cyclecloud-terraform repository that helped us to create the code to setup the infrastructure. Lots of thanbks also to Trevor who did the ground work for the terraform templates.    
 
 
 
