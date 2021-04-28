@@ -296,9 +296,9 @@ Now we can check the job´s output (e.g. namd_3.out) and error (e.g. namd_3.err)
 In continuation, we will run another 3 jobs. We do this in the same way as before:
 
 1) Modify namd-sjob.sh
-2) submit tyhe job using sbatch
+2) Submit the job using sbatch
 3) Wait for the job to finish
-4) Modify namd-sjob
+4) Modify namd-sjob.sh
 5) ...
 
 with the following number of cores and nodes:
