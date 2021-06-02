@@ -80,7 +80,7 @@ On the Advanced Setting screen, we leave the Slurm Version (20.11.4-1), Job Acco
 
 ![image](https://user-images.githubusercontent.com/57151484/115953773-a2c5ab80-a4ed-11eb-8408-c3226cfe9675.png)
 
-On the Software section, please change the OS image for the Scheduler to the custom image we are going to tell you. Select custom image and fill in the name of the image. Leave the HPC and HTC OS versions as they are.
+On the Software section, please change the OS image for the Scheduler to the custom image we are going to tell you. Select custom image and fill in the name of the image. Change the HPC and HTC OS versions to `CentOS 7`.
 
 ![image](https://user-images.githubusercontent.com/57151484/115953790-cab50f00-a4ed-11eb-915e-762072a7d679.png)
 
