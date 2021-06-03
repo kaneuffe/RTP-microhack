@@ -351,7 +351,7 @@ chmod +x /tmp/rtp-microhack-desktop.sh
 ```
 Download the VMD application with the following command: 
 ```Shell
-wget --no-check-certificate https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
+wget -O /tmp/vmd-1.9.3.tar.gz --no-check-certificate https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
 ```
 
 Next, upload the VMD application to the /tmp folder on your scheduler node (e.g. using WinSCP, scp, sftp), and then run the following commands (you need to be the root user to execute these - e.g. "sudo su -": 
