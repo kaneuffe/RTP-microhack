@@ -180,11 +180,11 @@ Last login: Sat Apr 24 10:42:06 2021 from XX.YY.ZZ.MM
 ```
 ### Download required files and the namd Singularity container
 
-In the next step create a namd directory and switch into it.
+In the next step create a namd directory and switch into it (NOTE:  `/shared` is the ANF NFS mount with 777 permissions).
 
 ```Shell
-[team6@ip-0A000704 ~]$ mkdir namd
-[team6@ip-0A000704 ~]$ cd namd
+[team6@ip-0A000704 ~]$ mkdir /shared/namd
+[team6@ip-0A000704 ~]$ cd /shared/namd
 ```
 Download the job submission namd-sjob.sh script.
 
@@ -220,8 +220,8 @@ Once you have downloaded the namd container, we need to modify the jobs submissi
 Please change: 
 - line 5 (number of **nodes**) to `1`, 
 - line 6 (number of **ntasks**) to `120`, 
-- line 17 (**WORKDIR**) to the correct user home: `/shared/home/TEAM_USERNAME/namd...` 
-- end of line 28: (the path of the namd container) to `/shared/home/TEAM_USERNAME/namd/namd-2.14.sif`.
+- line 17 (**WORKDIR**) to the correct dir: `/shared/namd...` 
+- end of line 28: (the path of the namd container) to `/shared/namd/namd-2.14.sif`.
 
 ```Shell-script
 #!/bin/bash
