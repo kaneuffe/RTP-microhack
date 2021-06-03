@@ -15,7 +15,7 @@ useradd msadmin
 usermod --password $(echo "M1cr0s0ft2020" | openssl passwd -1 -stdin) msadmin
 mkdir -p ~msadmin/.vnc
 cat <<EOF> ~msadmin/.vnc/config
-session=xfce
+#session=xfce
 geometry=1200x800
 localhost
 alwaysshared
@@ -47,5 +47,6 @@ cat <<EOM> ~msadmin/.vnc/startup
 xrdb $HOME/.Xresources
 startxfce4 &
 EOM
+chmod +x ~msadmin/.vnc/xstartup
 
 
