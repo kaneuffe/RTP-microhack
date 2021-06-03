@@ -14,6 +14,7 @@ yum -y install tigervnc-server
 useradd msadmin
 usermod --password $(echo "M1cr0s0ft2020" | openssl passwd -1 -stdin) msadmin
 mkdir -p ~msadmin/.vnc
+chown msadmin:msadmin /home/msadmin
 cat <<EOF> ~msadmin/.vnc/config
 #session=xfce
 geometry=1200x800
