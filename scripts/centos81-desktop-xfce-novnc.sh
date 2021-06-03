@@ -47,6 +47,8 @@ cat <<EOM> ~msadmin/.vnc/xstartup
 xrdb $HOME/.Xresources
 startxfce4 &
 EOM
+
 chmod +x ~msadmin/.vnc/xstartup
 
+runuser -l  msadmin -c 'vncserver :0'
 
