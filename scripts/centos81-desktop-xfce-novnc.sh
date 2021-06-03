@@ -41,6 +41,11 @@ snap install novnc
 nohup /snap/bin/novnc --vnc localhost:5900 --listen 6080 &
 snap set novnc services.n6082.listen=6080 services.n6082.vnc=localhost:5900
 
-
+mv ~msadmin/.vnc/xstartup ~msadmin/.vnc/xstartup.bkup
+cat <<EOM> ~msadmin/.vnc/startup
+#!/bin/bash
+xrdb $HOME/.Xresources
+startxfce4 &
+EOM
 
 
