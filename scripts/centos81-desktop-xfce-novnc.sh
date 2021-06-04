@@ -49,6 +49,12 @@ xrdb $HOME/.Xresources
 startxfce4 &
 EOM
 
+if grep -q '/usr/local/bin/vmd' ~msadmin/.bash_profile; then
+  echo "VMD already in path"
+else
+  echo "export PATH=$PATH:/usr/local/bin/vmd" >> ~msadmin/.bash_profile
+fi
+
 chmod +x ~msadmin/.vnc/xstartup
 
 runuser -l  msadmin -c 'vncserver :0'
