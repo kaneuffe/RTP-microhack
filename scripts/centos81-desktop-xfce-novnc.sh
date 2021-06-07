@@ -45,16 +45,10 @@ snap set novnc services.n6082.listen=6080 services.n6082.vnc=localhost:5900
 mv ~msadmin/.vnc/xstartup ~msadmin/.vnc/xstartup.bkup
 cat <<EOM> ~msadmin/.vnc/xstartup
 #!/bin/bash
-source ~msadmin/.bash_profile
+export PATH=$PATH:/usr/local/bin/vmd
 xrdb $HOME/.Xresources
 startxfce4 &
 EOM
-
-if grep -q '/usr/local/bin/vmd' ~msadmin/.bash_profile; then
-  echo "VMD already in path"
-else
-  echo "export PATH=$PATH:/usr/local/bin/vmd" >> ~msadmin/.bash_profile
-fi
 
 chmod +x ~msadmin/.vnc/xstartup
 
