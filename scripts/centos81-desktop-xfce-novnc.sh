@@ -45,7 +45,7 @@ snap set novnc services.n6082.listen=6080 services.n6082.vnc=localhost:5900
 mv ~msadmin/.vnc/xstartup ~msadmin/.vnc/xstartup.bkup
 cat <<EOM> ~msadmin/.vnc/xstartup
 #!/bin/bash
-export PATH=$PATH:/usr/local/bin/vmd
+export PATH=$PATH:/usr/local/bin
 xrdb $HOME/.Xresources
 startxfce4 &
 EOM
