@@ -365,7 +365,9 @@ To log in to the machine with VNC in a web browser, navigate to the following UR
 http://<your-public-ip>:6080/vnc.html?host=<your-public-ip>&port=6080
 ```
 
-You will need to log in with the password shared with you in the tutorial.  Once you then access the desktop, you can open a terminal and type the "vmd" command to execute the VMD graphical application.  You will then be able to analyze your data.
+You will need to log in with the password shared with you in the tutorial.  Once you then access the desktop, you can open a terminal and type the "vmd" command to execute the VMD graphical application.  You will then be able to analyze your data.  
+
+```NOTE:  If you are unable to open the NoVNC link in a browser advise your proctor.  There may be an issue with the Network Security Group.```
 
 
 
