@@ -240,7 +240,7 @@ module load mpi/hpcx
 #
 # Switch to workdir
 #
-WORKDIR=/shared/home/kai/namd/namd-benchmarks/1400k-atoms/
+WORKDIR=/shared/namd/namd-benchmarks/1400k-atoms/
 cd $WORKDIR
 #
 # Set INPUT variables
