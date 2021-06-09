@@ -19,7 +19,7 @@ cd $WORKDIR
 #
 # Set INPUT variables
 #
-INPUT=benchmark.in
+INPUT=/shared/namd/namd-benchmarks/1400k-atoms/benchmark.in
 
 #
 # Define variables
